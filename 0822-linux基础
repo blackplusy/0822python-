@@ -82,40 +82,27 @@ cd ..			目录切换到上一级所在目录
 cd -			目录切换到上一次操作所在目录
 cd /			目录切换到/目录
 cd ~			目录切换到家目录
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+e.帮助
+man			官方文档
+man ls			查看ls命令的官方文档(按q退出)
+info 			说明文档
+info ls  		查看ls命令的说明文档
+--help			常见参数
+ls --help		查看ls命令的常见参数
+f.目录操作(建议到/opt目录下练习)
+创建(mkdir)
+sudo mkdir a		当前目录下创建空目录a
+sudo mkdir /opt/b c     在/opt目录下创建空目录b，在当前目录下创建空目录c
+sudo mkdir "d e"        在当前目录下创建d e目录
+sudo mkdir f/g/h -p     当前目录下创建级联目录f/g/h
+复制(cp)
+sudo cp -r d a          复制d目录到a目录中(a目录存在)
+sudo cp -r d a/b        复制d目录到a目录中并且重命名为b
+sudo cp -r a g          复制a目录为当前目录下的g目录(g目录不存在)
+移动(mv)
+sudo mv a  b 		移动a目录到b目录中(b目录存在)		
+sudo mv g  h		重命名g目录为h目录(h目录不存在)
+删除(rm)
+sudo rm -r b            删除当前目录下的b目录
 
 
