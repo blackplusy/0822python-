@@ -1,1 +1,105 @@
-test
+复习：
+1.目录
+/
+/bin
+/boot
+/dev
+/proc
+/etc
+/var
+/opt
+/tmp
+/mnt
+/home
+/root
+/sbin
+2.命令
+who
+whoami
+ls
+cd
+pwd
+mkdir
+cp
+mv
+rm
+man
+info
+===============================================================================
+1.文件操作
+a.创建
+sudo touch a1		当前目录下创建a1文件
+sudo touch /opt/a2 a3   /opt目录下创建a2
+sudo touch b{1,2,3,4}   当前目录下创建b1 b2 b3 b4
+b.重定向
+echo  打印
+>  		覆盖
+覆盖：删除原有所有内容，添加新内容,如果没有该文件，自动创建
+echo hello > /home/heygor/test
+补充：清空文件
+echo > 文件名
+>>		追加
+追加：在文件最后一行后新开一行添加新内容，如果没有该文件，自动创建
+echo 192.168.1.11 >> /home/heygor/ip2
+1>正确信息打印到文件中
+ls 5 6 1>/home/heygor/testing
+2>错误信息打印到文件中
+ls 5 6 2>/home/heygor/testing
+c.vi编辑器
+2复制
+注意：只能从文件复制到目录，不能文件复制到文件中
+sudo cp 1 2 c 复制1,2文件到c目录中(c目录存在)
+sudo cp 1 a   复制1文件为当前目录下的a文件(a目录不存在)
+3.移动
+sudo mv 1 2 3 4 d 移动1 2 3 4到d目录中(d目录存在)
+sudo mv 5 test    重命名5文件为test(test目录不存在)
+删除
+rm a* 		  删除当前目录下a开头的所有文件
+rm -rf *	  删除当前目录下所有文件
+查看
+cat	            不分页显示文件内容
+cat /var/log/syslog 不分页查看/var/log/syslog文件内容
+less                分页显示文件内容，可以向上、向下翻页(q退出)
+less /var/log/syslong
+more                分页显示文件内容，只能向下翻页
+more /var/log/syslong
+head		    显示文件前几行
+head -3 /var/log/syslog 显示文件前3行
+tail 		    显示文件后几行
+tail -2 /var/log/syslong  显示文件后2行
+vi
+修改
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
