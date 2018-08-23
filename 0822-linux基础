@@ -1,290 +1,108 @@
-复习：
-1.目录
-/
-/bin
-/boot
-/dev
-/proc
-/etc
-/var
-/opt
-/tmp
-/mnt
-/home
-/root
-/sbin
-2.命令
-who
-whoami
-ls
-cd
-pwd
-mkdir
-cp
-mv
-rm
-man
-info
-===============================================================================
-1.文件操作
-a.创建
-sudo touch a1		当前目录下创建a1文件
-sudo touch /opt/a2 a3   /opt目录下创建a2
-sudo touch b{1,2,3,4}   当前目录下创建b1 b2 b3 b4
-b.重定向
-echo  打印
->  		覆盖
-覆盖：删除原有所有内容，添加新内容,如果没有该文件，自动创建
-echo hello > /home/heygor/test
-补充：清空文件
-echo > 文件名
->>		追加
-追加：在文件最后一行后新开一行添加新内容，如果没有该文件，自动创建
-echo 192.168.1.11 >> /home/heygor/ip2
-1>正确信息打印到文件中
-ls 5 6 1>/home/heygor/testing
-2>错误信息打印到文件中
-ls 5 6 2>/home/heygor/testing
-c.vi编辑器
-2复制
-注意：只能从文件复制到目录，不能文件复制到文件中
-sudo cp 1 2 c 复制1,2文件到c目录中(c目录存在)
-sudo cp 1 a   复制1文件为当前目录下的a文件(a目录不存在)
-3.移动
-sudo mv 1 2 3 4 d 移动1 2 3 4到d目录中(d目录存在)
-sudo mv 5 test    重命名5文件为test(test目录不存在)
-4.删除
-rm a* 		  删除当前目录下a开头的所有文件
-rm -rf *	  删除当前目录下所有文件
-5.查看
-cat	            不分页显示文件内容
-cat /var/log/syslog 不分页查看/var/log/syslog文件内容
-less                分页显示文件内容，可以向上、向下翻页(q退出)
-less /var/log/syslong
-more                分页显示文件内容，只能向下翻页
-more /var/log/syslong
-head		    显示文件前几行
-head -3 /var/log/syslog 显示文件前3行
-tail 		    显示文件后几行
-tail -2 /var/log/syslong  显示文件后2行
-vi
-6.修改
-vi/vim 
-a.安装vim：sudo apt-get install vim
-b.新建、修改文件：vim 文件名
-c.vi编辑器的模式
-命令
-编辑
-末行
-d.命令模式
-跳转
-	^	光标跳转到本行内容行首
-	$	光标跳转到本行内容行尾
-	gg	光标跳转到文件内容首行行首
-	20gg	光标跳转到20行行首
-	G       光标跳转到文件内容末行行首
-复制
-	yy	复制当前行内容
-	10yy 	复制10行内容
-粘贴
-	p
-剪切/删除
-	dd	删除/剪切当前行内容
-	10dd	删除10行内容
-搜索
-	/A	全文搜索A关键字
-	?A	全文搜索A关键字
-撤销操作
-	u
-命令模式进入到编辑模式的方法
-	i	光标所在位置进行插入，并且进入到编辑模式
-	O o
-	A a
-	S s
-e.编辑模式
-自己动手丰衣足食
-编辑模式无法直接进入到末行模式，需要返回到命令模式(ESC)
-f.末行模式
-命令模式：
-:set nu   	显示行号
-:set nonu	取消显示行号
-:w		保存、另存
-:wq!		强制保存退出
-:q		退出
-替换
-:1,$s/1/aaa/	全文搜索1替换为aaa，每行替换第一个
-:20,30s/a/bbb/g  20行和30行之间搜索a替换为bbb，全部替换
+1.常见的操作系统平台
+a.unix
+	IOS  MAC OS  AIX
+b.linux
+	redhat  centos
+	suse    opensuse
+	ubuntu  kali
+	麒麟    redstar
+c.windows
+	server
+		server03 08 12 16
+	desktop
+		win7 win10 win8 winxp
 
+2.云、大数据、虚拟化、开源
+a.云
+	云计算
+	云存储
 
-2.设置网络
-搜索IP
-终端--ping 192.168.6.x
-x:1-254
-ifconfig 查看网卡信息
-sudo vim /etc/network/interfaces
-auto ens33
-iface ens33 inet static
-address 192.168.1.11
-netmask 255.255.254.0
-gateway 192.168.1.1
-设置完毕后必须重启网络
-sudo /etc/init.d/networing restart
-sudo service network restart
-如果不生效，重启系统
-3.设置主机名
-sudo vim /etc/hostname
-修改后重启系统生效
-4.绑定主机名
-sudo vim /etc/hosts
-192.168.1.8 gaga.com
-注意：简单的域名解析服务器
-补充：安装系统后需要设置IP，主机名、绑定主机名
-5.启动模式
-sudo init 0  关机
-sudo init 3  进入到命令模式
-sudo init 5  进入到图形模式
-sduo init 6  重启
-
-
-6.包、压缩文件、压缩包
-a.包(tar)
-注意：创建的包文件通常以.tar结尾
-打包
-tar -cvf 1.tar 0822/ syslog     创建包文件1.tar,打包内容为0822目录和syslog文件
-tar -cvf 2.tar examples.desktop 创建包文件2.tar，打包内容为example.desktop文件 
-查看包
-tar -tvf 1.tar	查看包中的文件属性信息
-解包
-tar -xvf 1.tar  解包包文件1.tar到当前目录下
-sudo tar -xvf 1.tar -C /opt/  解包包文件1.tar到/opt目录下，指定目录需要加-C
-
-b.压缩文件(gzip)
-注意：压缩文件是体积减小，只能压缩文件不能压缩目录
-du -sh syslog	查看syslog文件大小
-压缩文件
-gzip syslog	压缩文件syslog
-压缩后文件后缀增加.gz,原文件消失
-gzip -l syslog.gz 查看文件压缩属性信息
-解压
-gzip -d syslog.gz 解压压缩文件到当前目录
-
-c.压缩包
-先打包后压缩
-tar -cvf ip.tar ip*
-gzip ip.tar 
-创建压缩包
-创建的压缩包文件一般以.tar.gz或者.tgz结尾
-tar -czvf ip1.tar.gz ip* syslog   创建压缩包文件，打包内容为ip开头的所有文件和目录，syslog文件
-查看压缩包
-tar -tzvf ip1.tar.gz 查看压缩包文件ip1.tar.gz的文件属性信息
-解压压缩包
-sudo tar -xzvf ip1.tar.gz -C /opt/ 解压压缩包ip1.tar.gz到/opt目录下
-
-
-补充:.tar.xz的文件解压
-x.tar.xz
-xz -d x.tar.xz------>x.tar
-tar -xvf x.tar
-
-
-
-
-7.用户和权限
-a.用户
-创建用户
-/etc/passwd  用户的配置文件
-/etc/shadow  用户的密码配置文件
-/etc/group   用户的组配置文件
-adduser simon 创建用户simon
-passwd simon  给用户simon设置密码
-修改用户
-usermod —L   锁定用户(不能登录)
-usermod -U   解锁用户(取消锁定)
-删除用户
-del user simon     删除用户
-b.权限
-查看权限方法
-ls -l examples.desktop 
--rw-r--r-- 1 heygor heygor 8980 8月   7 10:44 examples.desktop
-1.文件类型  d:目录 -:普通文件
-2-10.文件权限
-11.文件节点
-12.文件拥有者
-13.文件拥有组
-14.文件大小
-15.最后修改时间
-16.文件名
-权限分类
-r(读)
-	目录：可以列表
-	文件：可以查看文件内容
-w(写)
-	目录：可以创建、重命名、删除文件
-	文件：可以修改文件内容
-x(执行)
-	目录：可以进入
-	文件：可执行，脚本或者二进制文件
-权限分组
-rw-         r--        r--
-拥有者权限  拥有组权限 其他人权限
-系统判断权限过程
-判断用户是否为文件拥有者，如果是赋予拥有者权限
-如果不是，判断用户是否为拥有组成员，如果是赋予拥有组权限
-如果不是，赋予其他人权限
-id simon  查看simon用户的组信息
-
-修改权限方法
-直接修改(chmod)
-字符方式
-u 拥有者
-g 拥有组
-o 其他人
-a 所有人
-sudo chmod u+x examples.desktop  	修改文件权限拥有者增加执行权限
-sudo chmod g+x,o+x examples.desktop     修改文件权限拥有组和其他人增加执行权限
-sudo chmod a-x examples.desktop         修改文件权限所有用户取消执行权限
-数字方式
-r:4
-w:2
-x:1
--:0
-sudo chmod 777 example.desktop		修改文件权限所有用户拥有读写执行权限
-sudo chmod 000 example.desktop		修改文件权限所有用户没有任何权限
-间接修改(chown)
-通过修改文件属主方式修改
-sudo chown simon examples.desktop 	修改文件拥有者为simon
-sudo chown :bin examples.desktop 	修改文件拥有组为bin
-sudo chown heygor:heygor examples.desktop 修改文件拥有者为heygor，拥有组为heygor
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	私有云
+	共有云
+	混合云
+b.大数据
+	海量数据
+	
+c.虚拟化
+d.容器云（docker）
+3.ubuntu基础
+a.目录结构
+目录：linux下的文件夹
+linux下一切皆为文件
+/  	根目录   存放linux中所有文件
+/bin    存放普通用户命令的位置
+/boot   系统启动时需要的引导文件
+/dev    存放系统硬件的位置
+/etc    存放系统配置文件
+/home   普通用户的家目录所在目录(当我们创建用户时候，默认会在/home里面创建一个和用户同名的目录作为该用户的家目录[用户登录时候默认所在的目录])
+/lib	存放系统库文件的位置
+/mnt	系统默认挂载点
+/opt    普通用户操作所在目录
+/proc   存放系统当前运行信息的位置
+/root  	管理员的家目录
+/sbin   存放管理员命令的位置
+/tmp    存放系统临时文件的位置
+/var    存放系统运行信息(日志文件)
+b.ubuntu的管理员
+ubuntu中不允许管理员直接登录，通过切换用户的方法使用管理员权限
+sudo      用管理员权限执行某些程序
+sudo -i   切换到管理员用户
+c.中端简介
+右键--终端
+heygor@hey-gor:~$ 
+heygor    当前登录的用户是heygor
+@hey-gor  当前系统的主机名是hey-gor
+补充：查看系统主机名 hostname
+～	  当前所在目录为用户的家目录
+$         当前用户权限为普通用户
+#         当前用户权限为管理员
+d.基础命令
+d1.查看用户
+who	  当前登录用户的登录属性信息(用户、终端、登录时间、IP)
+whoami    当前登录用户的用户名
+last      查看最后登录的登录属性信息
+d2.查看路径
+pwd	  查看当前路径的绝对路径
+绝对路径  以/开头的路径
+相对路径  不以/开头的路径
+.         当前目录(执行本地脚本文件)
+..        当前目录的上一级目录
+d3.列表
+ls			显示当前目录下所有文件名
+ls -a			显示但前目录下所有文件名(包含隐藏文件)
+ls -l			显示当前目录下所有文件的文件属性信息
+ls -al			显示当前目录下所有文件的文件属性信息(包含隐藏文件)
+ls /home/heygor         显示/home/heygor目录下所有文件名
+ls -l /home/heygor      显示/home/heygor目录下所有文件属性信息
+ls -ld /home/heygor     显示/home/heygor目录的文件属性信息
+d4.目录切换
+cd			目录切换到家目录
+cd /var/log		目录切换到/var/log目录下
+cd ..			目录切换到上一级所在目录
+cd -			目录切换到上一次操作所在目录
+cd /			目录切换到/目录
+cd ~			目录切换到家目录
+e.帮助
+man			官方文档
+man ls			查看ls命令的官方文档(按q退出)
+info 			说明文档
+info ls  		查看ls命令的说明文档
+--help			常见参数
+ls --help		查看ls命令的常见参数
+f.目录操作(建议到/opt目录下练习)
+创建(mkdir)
+sudo mkdir a		当前目录下创建空目录a
+sudo mkdir /opt/b c     在/opt目录下创建空目录b，在当前目录下创建空目录c
+sudo mkdir "d e"        在当前目录下创建d e目录
+sudo mkdir f/g/h -p     当前目录下创建级联目录f/g/h
+复制(cp)
+sudo cp -r d a          复制d目录到a目录中(a目录存在)
+sudo cp -r d a/b        复制d目录到a目录中并且重命名为b
+sudo cp -r a g          复制a目录为当前目录下的g目录(g目录不存在)
+移动(mv)
+sudo mv a  b 		移动a目录到b目录中(b目录存在)		
+sudo mv g  h		重命名g目录为h目录(h目录不存在)
+删除(rm)
+sudo rm -r b            删除当前目录下的b目录
 
 
