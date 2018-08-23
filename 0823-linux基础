@@ -146,6 +146,61 @@ sudo init 5  进入到图形模式
 sduo init 6  重启
 
 
+6.包、压缩文件、压缩包
+a.包(tar)
+注意：创建的包文件通常以.tar结尾
+打包
+tar -cvf 1.tar 0822/ syslog     创建包文件1.tar,打包内容为0822目录和syslog文件
+tar -cvf 2.tar examples.desktop 创建包文件2.tar，打包内容为example.desktop文件 
+查看包
+tar -tvf 1.tar	查看包中的文件属性信息
+解包
+tar -xvf 1.tar  解包包文件1.tar到当前目录下
+sudo tar -xvf 1.tar -C /opt/  解包包文件1.tar到/opt目录下，指定目录需要加-C
+
+b.压缩文件(gzip)
+注意：压缩文件是体积减小，只能压缩文件不能压缩目录
+du -sh syslog	查看syslog文件大小
+压缩文件
+gzip syslog	压缩文件syslog
+压缩后文件后缀增加.gz,原文件消失
+gzip -l syslog.gz 查看文件压缩属性信息
+解压
+gzip -d syslog.gz 解压压缩文件到当前目录
+
+c.压缩包
+先打包后压缩
+tar -cvf ip.tar ip*
+gzip ip.tar 
+创建压缩包
+创建的压缩包文件一般以.tar.gz或者.tgz结尾
+tar -czvf ip1.tar.gz ip* syslog   创建压缩包文件，打包内容为ip开头的所有文件和目录，syslog文件
+查看压缩包
+tar -tzvf ip1.tar.gz 查看压缩包文件ip1.tar.gz的文件属性信息
+解压压缩包
+sudo tar -xzvf ip1.tar.gz -C /opt/ 解压压缩包ip1.tar.gz到/opt目录下
+
+
+补充:.tar.xz的文件解压
+x.tar.xz
+xz -d x.tar.xz------>x.tar
+tar -xvf x.tar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
