@@ -116,6 +116,34 @@ f.末行模式
 :20,30s/a/bbb/g  20行和30行之间搜索a替换为bbb，全部替换
 
 
+2.设置网络
+搜索IP
+终端--ping 192.168.6.x
+x:1-254
+ifconfig 查看网卡信息
+sudo vim /etc/network/interfaces
+auto ens33
+iface ens33 inet static
+address 192.168.1.11
+netmask 255.255.254.0
+gateway 192.168.1.1
+设置完毕后必须重启网络
+sudo /etc/init.d/networing restart
+sudo service network restart
+如果不生效，重启系统
+3.设置主机名
+sudo vim /etc/hostname
+修改后重启系统生效
+4.绑定主机名
+sudo vim /etc/hosts
+192.168.1.8 gaga.com
+注意：简单的域名解析服务器
+补充：安装系统后需要设置IP，主机名、绑定主机名
+5.启动模式
+sudo init 0  关机
+sudo init 3  进入到命令模式
+sudo init 5  进入到图形模式
+sduo init 6  重启
 
 
 
