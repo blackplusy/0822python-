@@ -82,6 +82,79 @@ c.客户端的配置
 showmount -e nfs的server ip
 挂载nfs服务到本地
 sudo mount 192.168.1.11:/home /mnt
+补充：
+取消挂载umount
+查看挂载情况mount
+客户端--------------网络-----------------服务端
+192.168.7.10                   	   	 192.168.7.11
+nfs-common                     	 	 nfs-kernel-server
+				 	 配置/etc/exports
+				 	 /home/   *(rw)
+sudo mount 192.168.7.11:/home /mnt
+通过访问/mnt目录访问192.168.7.11的/home目录
+遇到问题
+nfs的主服务如果不起动，客户端无法连接
+修改完配置文件后，一定要重启服务，重启服务才能应用新的配置文件
+无法安装软件：修改apt源 vim /etc/apt/sources.list
+无法安装软件：卸载软件中心
+补充：apt-get(ubuntu下自动安装的命令)
+4.DNS服务器
+a.访问网站的过程
+浏览器---www.sina.com---交换机---企业路由器---电信DNS服务器(202.96.134.133)[域名--IP]--sina.com(222.76.214.60)
+<-----------------------------------------------------------------------------------------------------+
+交换机(2层设备)
+网络交互要求：
+1>硬件正常
+2>IP地址必须同一网段
+路由器(3层设备)
+路由：不同IP网段互相访问
+b.dns服务器
+Domain Name Service
+把主机名转换为IP地址
+在没有dns服务器情况下通过本台电脑的/etc/hosts文件记录主机名和IP对应，这个文件只对本机生效
+cat /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	hey-gor
+192.168.1.8     gaga.com
+FQDN：完全合格域名a.b.c
+dns服务器解析：
+1>域名--IP
+2>IP--域名
+1)DNS服务器软件安装
+sudo apt-get install bind9
+2)配置域名解析文件
+sudo vim /etc/bind/named.conf.local 
+新增以下内容
+zone "heygor.com" {
+        type master;
+        file "db.heygor.com";  #heygor.com的解析文件
+};
+3）编写heygor.com的解析文件
+cp /etc/bind/db.local /var/cache/bind/db.heygor.com 
+vim  /var/cache/bind/db.heygor.com 
+在最下面增加
+@    IN    A   192.168.1.11
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     localhost. root.localhost. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+@       IN      A       127.0.0.1
+@       IN      AAAA    ::1
+@       IN      A       192.168.1.11
+4)重启bind9服务
+sudo /etc/init.d/bind9 restart
+补充：客户端服务配置
+sudo vim /etc/resolv.conf 
+nameserver 192.168.1.11
+测试：nslookup 域名
 
 
 
