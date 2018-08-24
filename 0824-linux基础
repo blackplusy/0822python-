@@ -61,6 +61,28 @@ ps -ef |grep vim 查看vim相关进程是否正常
 head -7 examples.desktop | tail -1 查看文件第7行内容
 补充：监控文件tailf
 
+3.nfs服务搭建
+nfs：网络文件系统，可以在*ni系统间进行文件共享
+也是nas(网络附加存储)
+nfs的架构：c/s架构(c:客户端 s:服务器)
+a.安装软件包
+sudo apt-get install nfs-kernel-server nfs-common
+nfs-kernel-server nfs的主服务
+nfs-common        nfs的客户端服务
+b.nfs服务器的配置
+sudo vim /etc/exports
+/home *(rw)
+共享的目录为/home
+可以进行操作的用户所有用户(*)
+对目录的权限读写(rw)
+重启nfs主服务
+sudo /etc/init.d/nfs-kernel-server restart
+c.客户端的配置
+查看nfs服务器共享的目录
+showmount -e nfs的server ip
+挂载nfs服务到本地
+sudo mount 192.168.1.11:/home /mnt
+
 
 
 
