@@ -118,8 +118,8 @@ cat /etc/hosts
 192.168.1.8     gaga.com
 FQDN：完全合格域名a.b.c
 dns服务器解析：
-1>域名--IP
-2>IP--域名
+1>域名--IP(正向解析)
+2>IP--域名(反向解析)
 1)DNS服务器软件安装
 sudo apt-get install bind9
 2)配置域名解析文件
@@ -164,13 +164,57 @@ baidu.com   baidu是主机头 com是域
 a.b.baidu.com a是主机头
 .   .com   baidu.com   yum.baiu.com
 
-
-
-
 客户端1---sina.com--\        /222.76.214.60(新浪)
 客户端2---163.com----DNS服务器-183.58.17.101(163)
 客户端3---taobao.com/        \220.170.91.114(淘宝)
 
+搭建dns服务器出现的问题
+1./etc/bind/named.conf.local注意对齐，分号，file的名字(一定是/var/cache/bind/里面的)
+2./var/cache/bind/db.heygor.com 文件中增加的一行内容
+@    IN    A   192.168.1.11       想把主机名、域名解析为哪个IP
+3./etc/resolv.conf dns的配置文件(客户端)
+nameserver 192.168.1.11 （DNS服务器的IP）
+
+客户端                     服务器(192.168.1.11)
+/etc/resolv.conf
+namserver 192.168.1.11
+
+URL：统一资源定位器
+http://www.sin1.com:80/www/index.php?id=10
+1.协议  http://
+一组规定、规则
+http协议(超文本传输协议)
+超文本(富文本)：声音、图像、视频等
+普通文本
+规定了网络中先传输什么，后传输什么，怎样传输
+http协议的特点：无状态：彼此不记录过去的行为
+http协议的请求方法：
+get  我要什么，主要用于浏览,请求的信息显示在URL上
+https://s.taobao.com/search?q=lv&imgfile=&commend=all
+&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a2
+1bo.2017.201856-taobao-item.1&ie=utf8&initiative_id=tbindexz_20170306
+
+https://s.taobao.com/search?q=zara&imgfile=&js=1&stats_click=search_
+radio_all%3A1&initiative_id=staobaoz_20180824&ie=utf8
+
+post 我给什么，主要用于提交，请求的信息显示在请求体上
+请求分为请求头和请求体
+响应分为响应头和响应体
+cookie、session
+cookie  验证机制，存放在客户端(广告分析)
+session 验证机制，存放在服务器(30分钟超时)
+状态码
+200  2开头请求成功
+302  3开头移动或者缓存
+404  4开头客户端请求有问题
+500  5开头服务端有问题
+2.域名  www.sin1.com
+3.端口  ：80
+区分应用层进程的标识，每种软件对应端口都不一样
+如果一台电脑中安装多个mysql，需要修改端口防止端口冲突
+4.虚拟目录 /www
+5.访问文件 index.php
+6.访问参数 ?id=10
 
 
 
