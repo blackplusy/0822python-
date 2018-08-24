@@ -1,0 +1,76 @@
+who
+whoami
+last
+pwd
+cd
+ls
+man
+info
+mkdir
+cp
+rm
+mv
+touch
+echo
+cat
+head
+tail
+less
+more
+vi/vim
+ping
+ifconfig
+service
+tar
+gzip
+du
+chmod
+chown
+adduser
+passwd
+uermod
+deluser
+init 
+xz
+sudo
+hostname
+===========================================================================
+1.系统管理
+top 监控系统资源
+ps  查看终端的进程
+ps -ef 查看系统的进程
+kill 给进程发送信号
+	-15  温柔的结束进程
+	-9   暴力的结束进程
+free -m 查看系统内存
+vmstat 监控系统资源
+ifconfig 监控网络
+2.搜索和管道
+find		搜索文件，较慢
+sudo find /etc/ -name passwd /etc目录下搜索名字是passwd的文件
+sudo find /etc/ -name *.conf /etc目录下搜索文件名字以.conf结尾的文件
+locate  	搜索文件，快
+locate baidu	系统中搜索baidu相关文件
+sudo updatedb 	刷新系统数据库
+grep		搜内容
+grep root /etc/passwd	/etc/passwd文件中搜索含有root的行
+grep ^r /etc/passwd	/etc/passwd文件中搜索r开头的行
+grep bash$ /etc/passwd  /etc/passwd文件中搜索bash结尾的行
+|		前面的输出作为后面的输入
+ps -ef |grep vim 查看vim相关进程是否正常
+head -7 examples.desktop | tail -1 查看文件第7行内容
+补充：监控文件tailf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
