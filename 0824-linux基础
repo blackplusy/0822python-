@@ -157,8 +157,12 @@ nameserver 192.168.1.11
 测试：nslookup 域名
 
 
-
-
+www.baidu.com.
+主机头.域(组织、范围)
+根域.最后面的点
+baidu.com   baidu是主机头 com是域
+a.b.baidu.com a是主机头
+.   .com   baidu.com   yum.baiu.com
 
 
 
