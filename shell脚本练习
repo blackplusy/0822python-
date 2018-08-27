@@ -2,6 +2,15 @@
 Server X.X.X.X is running
 如果没有ping通
 Server x.x.x.x is down
+脚本：
+ping -c  1 $1 &>/dev/null
+res=$?
+if [ $res  = 0 ] ;then
+        echo 'server is running'
+else
+        echo 'server is down'
+fi
 
-2.判断当前目录下是否存在test目录，如果存在，打包所有目录下内容，并且打印‘完成打包’，如果没有该目录，则创建该目录，打印‘已经创建该目录’
+
+2.判断当前目录下是否存在test1目录，如果存在，打包所有目录下内容，并且打印‘完成打包’，如果没有该目录，则创建该目录，打印‘已经创建该目录’
 3.写一个脚本test。要求当给脚本传入参数kernel时候，打印出user，传入user参数时候，打印kernel，如果没有参数时候，打印‘参数错误’
