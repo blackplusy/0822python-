@@ -152,7 +152,6 @@ d.条件判断常见参数
 	逻辑判断符号
 	-a and(逻辑与) 同时满足条件
 	-o or(逻辑或)  满足一个条件即可
-	
 #read -p "your name is " user
 #echo $user
 #if [ $user='heygor' ];then
@@ -170,35 +169,57 @@ if [ $? = "0" ];then
 else
         echo 'WTF'
 fi
+   
+
+
+
 10.循环
 a.for循环
 for循环就是遍历，访问序列中每一个元素
 for i in 1 2 3 4
 do
-        echo "no.$i"
+	echo "no.$i"
 done
 echo "finished"
 
 for i in `seq 10`
 do
-        useradd usera$i
+	useradd usera$i
 done
 for ((i=1;i<=10;i++))
 do
         sudo userdel -r heyor$i
 done
 判断局域网中哪些IP可以用，哪些不可以用(写脚本)
+b.while循环
+while 条件
+do
+	执行语句
+done
+
+while TRUE
+do
+	执行语句
+done
+
+猜数字
+
+rannum=$(($RANDOM%10)) #产生一个随机数
+guest=100              #设置变量
+echo $rannum           #提示
+
+while [ "$guest" -ne "$rannum" ]
+do
+        read -p "guset num: " guest
+done
+
+echo "number is $rannum"
+
+需求：每次提示大了或者小了
 
 
 
 
 
 
-
-
-
-
-
-
-
-
+o
