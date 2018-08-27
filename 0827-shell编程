@@ -170,7 +170,25 @@ if [ $? = "0" ];then
 else
         echo 'WTF'
 fi
-~   
+10.循环
+a.for循环
+for循环就是遍历，访问序列中每一个元素
+for i in 1 2 3 4
+do
+        echo "no.$i"
+done
+echo "finished"
+
+for i in `seq 10`
+do
+        useradd usera$i
+done
+for ((i=1;i<=10;i++))
+do
+        sudo userdel -r heyor$i
+done
+判断局域网中哪些IP可以用，哪些不可以用(写脚本)
+
 
 
 
