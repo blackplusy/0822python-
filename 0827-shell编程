@@ -111,6 +111,65 @@ c.通过``方式
 ``先执行内部命令
 now=`date | awk -F " " '{print $5}'`
 echo $now
+9.条件判断
+shell编程中test命令，可以通过man test查看条件判断语法
+条件判断在脚本中以if关键字开头fi关键字结尾，test等价与[]
+a.单分支
+if [ 条件 ];then
+	执行语句
+fi
+b.双分支
+if [ 条件 ];then
+	执行语句
+eles
+	执行语句
+fi
+c.多分支
+if [ 条件 ];then
+	执行语句
+elif [条件];then
+	执行语句
+...
+else
+	执行语句
+fi
+d.条件判断常见参数
+	-f 是否存在(文件)
+		test -f /etc/passwd
+		如果条件成立，返回码是$?=0
+		[ -f /etc/passwd ]
+		[ -f /etc ]
+	-e 不管是文件还是目录存在条件就成立
+	-n 字符串为非空就是成立
+	-z 字符床长度为0就成里
+	字符串的对比 =   ！=，不能用于数值大小的判断
+	-eq 等于
+	-ne 不等于
+	-lt 小于
+	-gt 大于
+	-gte大于等于
+	-lte 小于等于
+	逻辑判断符号
+	-a and(逻辑与) 同时满足条件
+	-o or(逻辑或)  满足一个条件即可
+#read -p "your name is " user
+#echo $user
+#if [ $user='heygor' ];then
+#       echo 'creazy!!!!'
+#fi
+if [ -f /etc/passwd1 ];then
+        echo 'file exxists!'
+else
+        echo 'mu zhao dao'
+fi
+
+ls /etc/dadsadsads
+if [ $? = "0" ];then
+        echo 'its your hostname'
+else
+        echo 'WTF'
+fi
+~   
 
 
 
