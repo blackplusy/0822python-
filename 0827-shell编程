@@ -152,6 +152,7 @@ d.条件判断常见参数
 	逻辑判断符号
 	-a and(逻辑与) 同时满足条件
 	-o or(逻辑或)  满足一个条件即可
+	
 #read -p "your name is " user
 #echo $user
 #if [ $user='heygor' ];then
