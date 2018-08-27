@@ -1,0 +1,4 @@
+1.交互模式要求输入一个IP，通过脚本判断该IP对应主机网络是否可以ping通，如果可以ping通，输出结果
+Server X.X.X.X is running
+如果没有ping通
+Server x.x.x.x is down
