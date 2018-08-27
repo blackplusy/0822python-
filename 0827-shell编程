@@ -84,6 +84,35 @@ echo $ip
 read命令可以接受间哦按输入，并且赋值给变量
 read -p "your name is : " username
 echo $username
+7.变量的位置参数进行赋值
+通常脚本后面跟的第一个参数为$1,第二个参数为$2,以此类推
+修改vim day-05.sh
+findpath="$1"
+find $findpath -name day-05.sh
+执行
+./day06 /home/heygor
+
+修改vim day-06.sh
+echo "第一个参数是 $1"
+echo "第二个参数是 $2"
+echo "第三个参数是 $3"
+
+8.变量的运算
+a.通过let方式
+a=100
+b=30
+let c=a+b
+echo $c
+b.通过$()方式
+a=20
+b=30
+c=$((a+b))
+c.通过``方式
+``先执行内部命令
+now=`date | awk -F " " '{print $5}'`
+echo $now
+
+
 
 
 
