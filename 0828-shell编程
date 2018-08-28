@@ -48,7 +48,7 @@ service
 vmstat
 nslookup 
 -----------------------------------------------------------------------------------
-awk
+1.awk
 文本的行处理工具
 awk options file
 查看ip地址
@@ -98,7 +98,7 @@ awk -F ":" '$3>=30&&$3<=100{print $1,$3}' /etc/passwd
 awk -F "分隔符" 'BEGIN{ 处理文件前执行的代码块 }{ 处理文件过程中执行的 }END{ 处理文件后执行的代码 }'
 输出顶部增加' begin '
 输出最后增加' finish '
-
+//
 awk -F ":" 'BEGIN{ print "begin yeah!" }{ print $1 }END{print "finish!!!"}' passwd 
 注意：如果内容太多，可以通过 |more来进行查看
 
@@ -125,6 +125,20 @@ END{
 	print count
 }
 执行时候使用 awk -f 01.awk passwd 
+2.sed
+字段编辑和字段替换
+删除指令 d 在查看时候屏蔽某些信息
+删除所有行  		sed -e 'd' mypass
+删除第一行  		sed -e '1d' mypass
+删除1到3行		sed -e '1,3d' mypass
+删除第1行和第3行 	sed -e '1d;3d' mypass
+删除包含root关键字的行  sed -e '/root/d' mypass
+删除daemon开头的所有行  sed -e '/^daemon/d' mypass
+删除bash结尾的所有行    sed -e '/bash$/d' mypass
+删除所有空行            sed -e '/^$/d' mypass
+删除所有以#开头的行     sed -e '/^#/d' mypass
+
+
 
 
 
