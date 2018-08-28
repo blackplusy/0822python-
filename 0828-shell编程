@@ -138,6 +138,28 @@ END{
 删除所有空行            sed -e '/^$/d' mypass
 删除所有以#开头的行     sed -e '/^#/d' mypass
 
+打印所有行
+sed -n -e '' mypass 
+sed -n -e 'p' mypass 
+打印第一行和第三行
+sed -n -e '1p;3p' mypass
+匹配管理员开的行打印
+sed -n -e '/^root/p' mypass
+匹配以nologin结尾的进行打印
+sed -n -e '/nologin$/p' mypass
+
+替换命令，显示、打印时候替换
+每行搜到的第一个root关键字替换为admin
+sed -e 's/root/admin/' mypass
+每行找到所有n关键字替换为admin
+sed -e 's/n/admin/g' mypass
+只替换2-10行：为-
+sed -e '2,10s/:/-/g' mypass 
+
+把结果保存到源文件中
+sed -i '/^root/d' mypass
+
+
 
 
 
