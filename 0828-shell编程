@@ -1,0 +1,24 @@
+ awk
+ 52 文本的行处理工具
+ 53 awk options file
+ 54 查看ip地址
+ 55 ifconfig ens33 |grep 255 |awk  -F ":" '{print $2}'|awk -F " " '{print $1}'
+ 56 awk -F ":" '{print $1}'   /etc/passwd   打印文件的第一列
+ 57 awk -F ":" '{print $1,$6}' /etc/passwd  打印文件的第一列和第六列
+ 58 awk -F ":" '{print $1":"$6}' /etc/passwd打印文件第一列和第六列，用冒号分割
+ 59 
+ 60 $1,$2......$N 表示第几列
+ 61  awk -F ":" '{print $1,$6}' /etc/passwd
+ 62 
+ 63 $0            表示一整行
+ 64  awk -F ":" '{print $0}' /etc/passwd
+ 65 
+ 66 $NF           表示最后一列
+ 67 awk -F ":" '{print $NF}' /etc/passwd
+ 68 
+ 69 NF            标识每行有多少列
+ 70 head -1 /etc/passwd |awk -F ":" '{print NF}'
+ 71 
+ 72 NR            标识当前行号
+ 73 head -10 /etc/passwd |awk -F ":" '{print NR,$1}'
+ 74 
