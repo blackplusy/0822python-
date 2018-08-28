@@ -95,8 +95,36 @@ awk -F ":" 'NR>=5&&NR<=10{print NR,$0}' /etc/passwd
 打印UID在30-100范围内的用户名
 awk -F ":" '$3>=30&&$3<=100{print $1,$3}' /etc/passwd
 
+awk -F "分隔符" 'BEGIN{ 处理文件前执行的代码块 }{ 处理文件过程中执行的 }END{ 处理文件后执行的代码 }'
+输出顶部增加' begin '
+输出最后增加' finish '
 
+awk -F ":" 'BEGIN{ print "begin yeah!" }{ print $1 }END{print "finish!!!"}' passwd 
+注意：如果内容太多，可以通过 |more来进行查看
 
+打印文件最后一行的最后一列
+tail -1 passwd  |awk -F ":" '{print $NF}'
+awk -F ":" 'END{ print $NF }' passwd
+
+打印字段数大于4的总行数
+awk -F ":" 'NF>4{print}' /etc/passwd |wc -l
+awk -F ":" 'BEGIN{ count=0 }NF>4{ count++ }END{ print count }' passwd 
+
+把AWK代码写入独立文件中执行
+01.awk
+BEGIN{
+	FS=":"
+	count=0
+}
+{
+	if( NF>4 ){
+		count++
+	}
+}
+END{
+	print count
+}
+执行时候使用 awk -f 01.awk passwd 
 
 
 
