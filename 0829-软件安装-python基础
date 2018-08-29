@@ -1,122 +1,56 @@
-1.软件的分类
-QQ	c/s   b/s
-wechat  c/s   b/s
-360     c/s
-酷狗    c/s   b/s
-网易    
-淘宝
-支付宝
-京东
-高德
-三国杀 c/s b/s
-卡巴斯基 c/s
-LOL     c/s
-农药    c/s
-暴风影音 c/s
-快播     c/s 
-a.单机软件
-	不需要网络就可以执行的应用程序
-b.b/s架构软件
-	b:浏览器
-		ie	   搜狗  360  傲游  QQ  edge
-		chrome	   调试
-		firefox    调试  firebug
-		safari	
-	s:服务器
-		性能强悍的电脑
-c.c/s架构软件
-	c:客户端
-		pc端
-		移动端
-	s:服务器
-		性能强悍的电脑
-常见的软件架构
-c/s机构
-b/s架构
-单机软件
-2.b/s架构后端的组成
-a.前端
-	html  标记性语言  静态页面
-	css   样式表      结构美化
-	ui    用户接口    内容美化
-	js    javascript  动态页面(动画、交互)
-			  框架  JQUERY
-	      java        开发语言(偏重于后端)
-	      jsp         java server page (后端)
+1.python应用领域
+a.爬虫
+b.web开发
+c.数据分析
+d.机器学习
+e.自动化测试
+f.自动化运维
 
-b.后端
-	操作系统
-	unix
-	linux
-	windows	
+2.python的安装
+建议：官网下载，设置环境变量(win\linux)
+linux中设置环境变量
+	/etc/.bash_profile  用户变量
+	/etc/profile        系统变量
 
-	web服务器(整理数据)
-	apache    不支持java  支持python ruby perl
-	tomcat    java
-	nginx     轻量级web服务器
-	iis       微软开发
-	
-	数据库服务器(提供数据)
-	db2   	  IBM
-	oracle    甲骨文   中大型公司
-	mysql     甲骨文   互联网公司
-	sqlserver 微软开发
+3.python开发工具
+a.pycharm
+b.eclipse
+c.sublime text
+d.vim
 
-	常见搭配
-	系统        web服务器      数据库服务器
-	linux        apache          mysql	    (LAMP)
-		     nginx 	     mysql          (LNMP)
-		     tomcat          mysql/oracle
-	win          apache          mysql
-		     iis             sqlserver/access
-		     tomcat          mysql/oracle
-c.ubuntu下的软件安装
-c1.安装方式
-	a.手动安装
-	b.自动安装
-	c.源码安装
-c2.手动安装
-	ubuntu下面软件包都是deb结尾的，安装时候需要提前安装依赖包
-	系统
-		i686 i386  32位操作系统
-		x86_64     64位操作系统
-	软件的安装
-		sudo dpkg -i 软件包
-		如果出现问题时候，有提示命令，根据提示命令操作
-		sudo apt-get -f install
-		强制安装软件所需依赖包
-	补充：压缩包后缀是.zip通常是windows下面的压缩包，.tar或者.tar.gz是linux下的压缩包
-c3.自动安装
-	sudo apt-get instal 软件名
-	安装apache服务
-	sudo apt-get install apache2 
-	软件安装后需要运行才能提供服务
-	sudo service apache2 start(stop/status/restart)
-	检查服务
-	1.检查进程
-		ps -ef | grep apache
-	2.检查端口(apache默认端口是80)
-		netstat -ntlup | grep 80
-	访问
-	1.浏览器打开127.0.0.1(localhost 电脑本机)，如果出现欢迎页面说明软件安装完毕
-	2.elinks 127.0.0.1,按Q退出
-	安装mysqld服务
-	sudo apt-get install mysqld
-	sudo apt-get install mysql* 
-c4.源码安装
-	下载源码进行编译
-	二进制文件安装
+4.python的运行环境
+a.开发工具
+b.python自带环境
+c.python 文件名
+注意：python开发的文件通常以.py结尾
 
+5.输入和输出
 
+输出应用场景
+a.某宝搜索相关商品
+b.访问页面不存在(404)
+c.调试程序时候进行输出
+d.网站用户名注册提示
 
+输入的应用场景
+a.注册用户时候添加信息
+b.搜索框输入信息
+c.前后端交互(接口)
 
+4.1 输入
+input      (python2版本中接受键盘输入的数字信息python3中接受键盘输入字符串信息)
+raw_input  (python2版本中接受键盘输入字符信息，python3中已经取消)
 
+补充：
+NameError : name 'raw_input' is not defined
+未定义错误
 
-
-
-
-
-
+4.2 输出
+a.直接输出
+b.变量输出
+c.变量操作后输出
+d.函数输出
+e.格式化输出
 
 
 
