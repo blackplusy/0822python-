@@ -1,0 +1,128 @@
+1.软件的分类
+QQ	c/s   b/s
+wechat  c/s   b/s
+360     c/s
+酷狗    c/s   b/s
+网易    
+淘宝
+支付宝
+京东
+高德
+三国杀 c/s b/s
+卡巴斯基 c/s
+LOL     c/s
+农药    c/s
+暴风影音 c/s
+快播     c/s 
+a.单机软件
+	不需要网络就可以执行的应用程序
+b.b/s架构软件
+	b:浏览器
+		ie	   搜狗  360  傲游  QQ  edge
+		chrome	   调试
+		firefox    调试  firebug
+		safari	
+	s:服务器
+		性能强悍的电脑
+c.c/s架构软件
+	c:客户端
+		pc端
+		移动端
+	s:服务器
+		性能强悍的电脑
+常见的软件架构
+c/s机构
+b/s架构
+单机软件
+2.b/s架构后端的组成
+a.前端
+	html  标记性语言  静态页面
+	css   样式表      结构美化
+	ui    用户接口    内容美化
+	js    javascript  动态页面(动画、交互)
+			  框架  JQUERY
+	      java        开发语言(偏重于后端)
+	      jsp         java server page (后端)
+
+b.后端
+	操作系统
+	unix
+	linux
+	windows	
+
+	web服务器(整理数据)
+	apache    不支持java  支持python ruby perl
+	tomcat    java
+	nginx     轻量级web服务器
+	iis       微软开发
+	
+	数据库服务器(提供数据)
+	db2   	  IBM
+	oracle    甲骨文   中大型公司
+	mysql     甲骨文   互联网公司
+	sqlserver 微软开发
+
+	常见搭配
+	系统        web服务器      数据库服务器
+	linux        apache          mysql	    (LAMP)
+		     nginx 	     mysql          (LNMP)
+		     tomcat          mysql/oracle
+	win          apache          mysql
+		     iis             sqlserver/access
+		     tomcat          mysql/oracle
+c.ubuntu下的软件安装
+c1.安装方式
+	a.手动安装
+	b.自动安装
+	c.源码安装
+c2.手动安装
+	ubuntu下面软件包都是deb结尾的，安装时候需要提前安装依赖包
+	系统
+		i686 i386  32位操作系统
+		x86_64     64位操作系统
+	软件的安装
+		sudo dpkg -i 软件包
+		如果出现问题时候，有提示命令，根据提示命令操作
+		sudo apt-get -f install
+		强制安装软件所需依赖包
+	补充：压缩包后缀是.zip通常是windows下面的压缩包，.tar或者.tar.gz是linux下的压缩包
+c3.自动安装
+	sudo apt-get instal 软件名
+	安装apache服务
+	sudo apt-get install apache2 
+	软件安装后需要运行才能提供服务
+	sudo service apache2 start(stop/status/restart)
+	检查服务
+	1.检查进程
+		ps -ef | grep apache
+	2.检查端口(apache默认端口是80)
+		netstat -ntlup | grep 80
+	访问
+	1.浏览器打开127.0.0.1(localhost 电脑本机)，如果出现欢迎页面说明软件安装完毕
+	2.elinks 127.0.0.1,按Q退出
+	安装mysqld服务
+	sudo apt-get install mysqld
+	sudo apt-get install mysql* 
+c4.源码安装
+	下载源码进行编译
+	二进制文件安装
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
