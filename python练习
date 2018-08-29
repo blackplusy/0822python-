@@ -1,5 +1,7 @@
 1.分析社保信息，输入工资，计算出对应社保缴费信息，计算最后到手工资有多少
 详细说明：https://zhidao.baidu.com/question/551470542.html
 2.编写月工资计算器，输入月工资，输入出勤天数，加班天数，计算出本月的收入应该是多少
-详细说明https://zhidao.baidu.com/question/53022503.html?loc_ans=183345817
+详细说明：https://zhidao.baidu.com/question/53022503.html?loc_ans=183345817
+3.计算个人所得税，输入工资，输出所缴纳个人所得税
+详细说明：https://baike.baidu.com/item/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E7%A8%8E%E7%8E%87%E8%A1%A8/2552067
 3.编写一个人生倒计时计算器，输入目标年龄，判断还能活多久
