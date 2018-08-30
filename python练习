@@ -25,3 +25,11 @@
 python的源网址:https://www.python.org/
 python的文档网址：https://docs.python.org/3.5/
 python的下载页面：https://www.python.org/downloads/
+----------------------------------------------------------------------------------
+1.设计一个小程序，需求如下：
+定义一个很长的字符串，如：
+str="apple12345678tyuiopfghjkl"
+把该字符串按照反向的顺序打印出来，结果如下：
+lkjhgfpoiuyt87654321elppa
+a.通过reverse()的方法
+b.不通过reverse()的方法
