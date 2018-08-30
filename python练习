@@ -33,3 +33,10 @@ str="apple12345678tyuiopfghjkl"
 lkjhgfpoiuyt87654321elppa
 a.通过reverse()的方法
 b.不通过reverse()的方法
+2.通过列表方式实现：
+    1. 提示用户输入内容，如果为空则提示！
+    2. 判断用户输入的字符串首字母是否为元音（A、E、I、O、U）
+    3. 如果为元音，则在字符串后加上'ay'
+        eg. 如果用户输入'apple'->'appleay'
+    4. 如果首字母为辅音字母，则将该字符串首字母移动结尾，并加上'ay'
+        eg. 如果用户输入'hello'->'ellohay'。
