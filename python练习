@@ -21,6 +21,7 @@
         eg. 如果用户输入'hello'->'ellohay'。
 2.输入两个字符串，从第一字符串中删除第二个字符串中所有的字符。
 例如，输入”They are students.”和”aeiou”，则删除之后的第一个字符串变成”Thy r stdnts.”
-3.通过对源网址字符串操作生成python文档帮助文档网址
+3.通过对源网址字符串操作生成python文档帮助文档网址、下载页面
 python的源网址:https://www.python.org/
 python的文档网址：https://docs.python.org/3.5/
+python的下载页面：https://www.python.org/downloads/
