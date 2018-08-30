@@ -6,6 +6,7 @@ a.字符串的应用场景
 b.字符串的索引
 c.字符串的切片
 d.其他操作
+e.引号
 
 a.字符串的应用场景
 	1.用户名、密码、邮箱
@@ -34,9 +35,20 @@ c.字符串的切片
 d.其他操作
 拼接
 遍历
-	
+去空格
+str1='  python  '
+print(str1.strip())
+print(str1.lstrip())
+print(str1.rstrip())
+计算长度	
+str2='hello'
+print(len(str2))
 
-
+f.引号
+单引号
+双引号
+三引号
+可以用于作注释、说明，可以进行多行打印
 
 
 
