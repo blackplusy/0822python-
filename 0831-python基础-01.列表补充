@@ -1,0 +1,49 @@
+学习目标
+掌握以下内容
+
+课程内容
+1.通过栈的方式访问列表
+先进去的后出来
+后进去的先出来
+list.append()
+list.pop()
+
+2.获取列表的索引
+注意：+只能是同种类型数据进行操作,字符串和字符串，数字和数字
+l=['heygor','ladeng','8ma']
+print(l.index('ladeng'))
+
+l1=['simida','kouniqiwa','haleshao']
+for index,value in enumerate(l1):
+        print('索引是：'+str(index)+' 值是：'+value)
+
+3.列表推到式
+a.列表推到式是什么
+又叫列表解析式，提供了一种简单方法创建列表
+结构是中括号中包含一个表达式，然后一个gor语句，0个或者多个if语句，表达式是任意的，可以在列表中放入任意类型的对象，返回结果是一个新的列表
+
+b.优势
+	1.代码短，可读性好
+	2.列表推到式速度快
+
+c.列表推倒式使用
+标准格式：
+[表达式 for 变量 in 列表]
+[表达式 for 变量 in 列表 if 条件]
+
+#给定列表进行操作
+a=[1,2,3,4,5,6,7,8,9,10]
+print([3*x for x in a])
+print('*********************')
+
+#没有给定列表可以用range()方法
+print([3*x for x in range(1,11)])
+
+#加入if条件进行列表推到
+#获取列表a中所有的偶数
+
+print([x for x in a if x % 2 ==0])
+
+print('_______________________')
+#多个for语句进行列表推到
+print([[x,y] for x in range(2) for y in range(2)])
