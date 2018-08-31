@@ -1,0 +1,32 @@
+学习目标
+掌握简单的文件操作
+
+课程内容
+a.read readline readlines区别
+b.文件操作实例
+
+a.read readline readlines区别
+read  	 读取整个文件
+readline 读取下一行
+readlines读取整个文件到一个迭代器中共我们遍历
+
+b.文件操作实例
+当前目录下创建文件txl.txt,内容如下
+heygor  18028768679
+o8ma    17777777777
+
+判断电话18028768679是否存在于文件中
+file=open('/home/heygor/0831/txl.txt','r')
+for i in file.readlines():
+        #print(i)
+        #print(type(i))
+        i=i.strip('\n')
+        #把字符串按照空格拆分
+        b=i.split(' ')
+        #print(b)
+        #print(type(b))
+        if b[-1]=='18028768679':
+                print('tel in here！')
+        else:
+                print('not here')
+file.close()                 
