@@ -1,0 +1,32 @@
+学习目标
+掌握函数返回值的用法
+
+课程内容
+a.返回值的定义
+b.retrun和print区别
+c.return语句
+
+a.返回值定义
+函数定义时候是直接输出，有些时候需要处理一些参数，根据参数进行一些操作，需要返回值
+
+b.return和print的区别
+return作用是返回计算的值(结果)，需要print才能打印出来
+print作用是输出数据到控制端
+
+c.return语句
+用于退出函数，return下面的语句是不会执行的，选择性向调用这反活一个表达式，直接return反活None
+一个返回值
+	def sum(a,b):
+		jisuan=a+b
+		return jisuan
+	s=sum(20,30)
+	print(s)
+
+多个返回值
+	def re(a,b):
+		a*=10
+		b*=10
+		return a,b
+	num=re(3,5) #如果返回多个值，并且存在于一个变量中，以元组形式保存
+	r1,r2=re(3,4)
+	print(r1,r2)
