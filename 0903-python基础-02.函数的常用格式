@@ -1,0 +1,32 @@
+学习目标
+掌握函数常用的格式
+
+课程内容
+a.函数的常用类型
+b.常用类型实例
+
+a.函数的常用类型
+	1.无参数，无返回值(自己工作，散养)
+	2.无参数，有返回值(主动发周报)
+	3.有参数，无返回值(领导安排任务，不管做的怎么样)
+	4.有参数，有返回值(领导安排任务，并且要求回报任务完成情况)
+
+b.常用类型实例
+	1.无参数，无返回值
+	def print_hello():
+		print('hello world!!!')
+	print_hello()
+	2.无参数，有返回值
+	def sleep():
+		return 'sleep'
+	s=sleep()
+	print(s)
+	3.有参数，无返回值
+	def sub(x,y):
+		print('x+y=',x+y)
+	sub(2,3)
+	4.有参数，有返回值
+	def sub(x,y):
+		return x+y
+	res=sub(10,20)
+	print(res)
