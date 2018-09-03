@@ -1,0 +1,43 @@
+学习目标
+掌握匿名函数的用法
+
+课程内容
+a.什么是匿名函数
+b.匿名函数的用法
+
+a.什么是匿名函数
+函数定义过程中，没有给定函数名，python中用lambda来创建匿名函数
+lambda只是一个表达式，函数体比def简单
+lambda的主体是表达式，不是代码块，仅能在lambda表达式中封装有限的逻辑进去
+lambda有自己的命名空间，不能访问自己参数列表之外的或者是全局命名空间的参数
+
+b.匿名函数的用法
+lambda 参数列表： 变量[表达式]
+
+例子1（加法）:
+sum=lambda a1,a2:a1+a2
+print('相加后的值是:',sum(10,20))
+
+例子2（字典排序）:
+stu=[{name:'tom',age:18},{name:'jerry',age:20},{name:'snoopy',age:30}]
+
+stu.sort(key=lambda x:x['name'])
+print(stu)
+
+例子(把lambda当作一个变量)
+
+def operation(a,b,opt):
+	re=opt(a,b)
+	return re
+
+num1=int(input('数字1：'))
+num2=int(input('数字2：'))
+result=operation(num1,num2,lambda a,b:a+b)
+print(result)
+
+
+
+
+
+
+
