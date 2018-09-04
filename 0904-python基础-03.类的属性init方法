@@ -1,0 +1,41 @@
+学习目标
+掌握类的属性__init__()的使用方法
+
+课程内容
+a.__init__()使用方法
+b.__init__()调用
+
+
+a.__init__()使用方法
+定义默认值
+class 类名：
+	def __init__(self):
+		方法列表
+
+b.__init__()调用
+class student:
+        def __init__(self):
+                self.boy=20
+                self.girl=30
+        def study(self):
+                print('good good study!!!')
+
+simida=student()
+print(simida.boy)
+print(simida.girl)
+simida.study()
+注意：没有创建student对象时候，没有调用__init__()方法前就默认有2个属性，一个是boy，一个是girl，__init__()方法实在创建对象后立刻被默认调用
+class student:
+        def __init__(self,boy,girl):
+                self.badboy=boy
+                self.cutegirl=girl
+        def study(self):
+                print('study')
+z=student(20,30)
+print('班级中男生有%d 个'%z.badboy)
+print('班级中女生有%d 个'%z.cutegirl)
+
+c.补充内容
+__init__()方法，创建一个对象时候被默认调用，不需要手动调用
+__init__(self)中有一个参数名字是self，如果在创建对象时候传递2个实参，__init__(self)中作为第一个形参还需要2个形参，self不需要开发者传递的，python解释其会把当前对象引用传递过去                                        
+
