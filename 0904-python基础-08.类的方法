@@ -1,0 +1,32 @@
+学习目标
+掌握类的方法的定义
+
+课程内容
+a.类的方法的定义
+b.类的方法的实例
+
+a.类的方法的定义
+是类对象拥有的方法，通常用装饰器@classmethod来标识的方法，对于类的方法，第一个参数必须是类对象，一般是cls作为第一个参数，可以通过实例对象和类对象进行访问
+
+b.类的方法的实例
+class people:
+	country='china'
+	@classmethod
+	def getcountry(cls):
+		return cls.country
+p=people()
+print(p.getcountry()) #实例对象调用类的方法
+print(people.getcountry())#通过类对象调用类的方法
+类的方法还有一个用途是可以对类的属性进行修改
+class people:
+        country='china'
+        @classmethod
+        def getcountry(cls):
+                return cls.country
+        @classmethod
+        def setcountry(cls,country):
+                cls.country=country
+p=people()
+print(p.getcountry())
+p.setcountry('USA')
+print(p.getcountry())
