@@ -1,0 +1,28 @@
+学习目标
+掌握类的私有化属性
+
+课程内容
+a.私有化属性的表示方法
+b.访问私有化属性的方法
+c.注意事项
+
+a.私有化属性的表示方法
+class student:
+	def __init__(self):
+		self.__number=30
+
+banji=student()
+print(banji.__number)
+#注意：__number就是私有化属性
+
+b.私有化属性的访问方法
+class student:
+	def __init__(self,num):
+		self.__num=num
+	def print_name(self):
+		print('your age is %d'%self.__num)
+age=student(30)
+age.print_name()
+
+c.注意事项
+python中没有c++，java等private、public这种关键字区分共有属性和私有属性，它是以__开头，否则为共有属性
