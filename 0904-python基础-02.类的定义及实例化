@@ -1,0 +1,37 @@
+学习目标
+掌握python中类的定义的方法
+
+课程内容
+a.python中类定义的方法
+b.类定义的例子
+c.创建对象
+
+a.python中类定义的方法
+经典类
+	class 类名：
+		方法列表
+
+新式类
+	class 类名(object):
+		方法列表
+
+b.类定义的例子
+class student:                             #定义类
+	def study(self):		   #方法列表
+		print('im study!!!!')
+	def play(self):			   #方法列表
+		print('play ball')
+
+boy=student()
+#产生一个student的对象，通过boy实例对象来访问属性和方法
+boy.age=20
+#给对象添加属性，注意：后面如果再次出现，表示对属性进行修改
+boy.favor='sport'
+#给对象添加属性
+boy.study()
+#通过实例对象访问类的方法
+boy.play()
+print(boy.age)
+print(boy.favor)
+~                            
+注意：创建一个对象时候就是用一个模型(子),来创造一个实物
