@@ -1,0 +1,28 @@
+学习目标
+掌握self的应用
+
+学习内容
+a.self实例
+b.注意事项
+
+a.self实例
+class student:
+        def __init__(self,name):
+                self.name=name
+        def info(self):
+                print('你的名字是%s'% self.name)
+
+def studentinfo(student):
+        student.info()
+#heygor是student类的实例化对象
+heygor=student('heygorgaga')
+#对象实例化之后可以使用类的方法
+studentinfo(heygor)
+#studentinfo括号中传入的heygor是一个已经实例化的对象调用类的方法
+
+注意：函数的传参可以传入常规参数，也可以传入对象
+
+b.注意事项
+self可以理解为自己
+可以把self当作c++的类的指针一样理解，就是自己
+当某个对象调用其方法时候，python解释器会把这个对象作为第一个参数传递给self，开发者只需要传递后面参数即可
