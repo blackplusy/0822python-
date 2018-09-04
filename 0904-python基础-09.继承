@@ -1,0 +1,79 @@
+学习目标
+掌握继承的定义和使用方法
+
+课程内容
+a.单继承
+b.多继承
+c.父类重写
+
+
+a.单继承
+一个类派生另外一个子类，子类继承父类的属性和方法
+class dog:
+	def __init__(self,name,color='black'):
+		self.name=name
+		self.color=color
+	def run(self):
+		print('狗富贵，互相汪！！')
+
+class taidi(dog):
+	def set_name(self,name):
+		self.name=name
+	def eat(self):
+		print('im eating!!')
+
+gou=taidi('泰迪')
+print('名字为%s'%gou.name)
+print('颜色是%s'%gou.color)
+gou.eat()
+gou.set_name('erha')
+print('旺财的新名字',gou.name)
+gou.run()
+
+
+b.多继承
+子类继承多个父类的属性和方法
+class a:
+	def printa(self):
+		print('------------a------------')
+
+class b:
+	def printb(self):
+		print('-----------b------------')
+
+class c(a,b)
+	def printc(self):
+		print('-----------c------------')
+c1=c()
+c1.printa()
+c1.printb()
+c1.printc()
+
+c.父类重写
+当子类中的方法和父类中方法名字一致时候，子类会重写父类
+class dog:
+        def sayhi(self):
+                print('wang!!!!')
+
+class fadou(dog):
+        def sayhi(self):
+                print('么么da~~~~')
+
+dog1=fadou()
+dog1.sayhi()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
