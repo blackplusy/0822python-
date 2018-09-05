@@ -1,0 +1,53 @@
+4.SQL语句
+	SQL：结构化查询语言
+	DDL：数据库定义语言  create alter drop truncate
+	DML：数据库操作语言  insert update  delete
+	DQL：数据库查询语言  select
+	DCL：数据库控制语言  grant revoke
+
+
+5.数据的新增
+	字符类型需要加单引号
+	数字类型直接使用
+	日期类型需要加单引号
+	a.向表中所有列新增数据
+	语法：insert into 表 values(值1,值2..);
+	例子:向kr表中新增数据，泡菜名称为pc,价格250,出厂日期2019-01-01
+	insert into kr values('pc',250,'2019-01-01');
+	b.向表中指定列新增数据	
+	语法：insert into 表(列1,列2) values(值1,值2);
+	例子：向kr表中新增数据，泡菜名称ladeng,价格119
+	insert into kr(pname,price) values('ladeng',119);
+
+6.数据的修改
+	字符类型加单引号
+	数字类型直接使用
+	日期类型加单引号
+	语法：update 表 set 列=值 [where 条件];
+	注意：如果增加where条件，修改的是指定行的数据，如果不加where条件，修改的是整个列的数据
+	例子：修改kr表中价格为0
+	update kr set price=0;
+	例子：修改kr表中名字是pc的price为2000
+	update kr set price=2000 where pname='pc';
+
+7.数据的删除
+	delete     DML,可以删除指定数据,删除数据可以找回
+	truncate   DDL,只能删除所有数据，删除数据无法找回
+	delete：
+	语法：delete from 表 [where 条件];
+	例子：删除kr表中名字是ladeng的所有信息
+	delete from kr where pname='ladeng';
+	例子：删除kr表中所有数据
+	delete from kr;
+	
+	truncate:
+	语法：truncate table 表;
+	例子：删除kr表中所有数据
+	truncate table kr;
+
+	
+	
+
+
+
+
