@@ -1,0 +1,40 @@
+c.表结构的创建
+	表：类似于表格，有行，有列，有名子。
+	c1.数据类型
+	数字  int             123456
+	字符  char  varchar   'heygor' 'abc'
+	日期  date            '20180-11-01'
+	注意：char 和 varchar区别
+	char 	 定长  char(10)  
+	varchar  变长  varchar(10)  
+	c2.表结构的创建
+	语法：create table 表(
+		列名(字段) 数据类型，
+		列名(字段) 数据类型,
+		......
+		);
+	例子：创建表韩国(kr),泡菜名称(pname) 字符类型,泡菜价格(price) 数字类型，出场日期(ddate) 日期类型
+		create table kr(
+			pname char(10),
+			price int,
+			ddate date
+		);
+	补充：创建数据库：create database 名字
+		创建数据库test： create database test;
+	补充：查看表结构： desc 表名
+		查看kr表的表结构：desc kr
+	c3.约束
+	主键：列中的数据不能为空，而且不能重复(只能唯一)，每张表中只能有一个主键
+	唯一：列中的数据不能重复，作为主键约束的补充
+	非空：列中的数据不能为空，只要向表中新增数据，就一定向该列进行操作
+	检查：列中的数据是否满足条件
+	外键：一张表中的列的数据依赖于另外一张表中的数据
+	补充：
+	create table 表(
+		列  数据类型 primary key,   主键约束
+		列  数据类型 unique,        唯一约束
+		列  数据类型 not null,	    非空约束
+		列  数据类型 check(条件 and、or 条件), 检查约束
+		列  数据类型 references 被参考表(被参考列) 外键约束
+		);
+
