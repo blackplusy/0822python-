@@ -1,0 +1,42 @@
+8.数据的查询
+	简单查询
+	多表查询
+	分组查询
+	子查询
+	a.简单查询
+	查询时候可以查询指定列、指定行，指定行的列
+	语法：select 列 from 表 [where 条件];
+	查询kr表中所有泡菜名称
+	select pname from kr;
+	查询kr表中价格是250的所有信息
+	select * from kr where price=250;
+	查询商品名称是heyga的价格
+	select price from kr where pname='heyga';
+	注意：select后面from前面是和列相关，where条件和行相关。
+	b.where条件(子句)
+	b1.比较运算符
+		>
+		<
+		=
+		>=
+		<=
+		!=
+		<>
+	例子：查询kr表中价格高于260的泡菜的名字
+	select pname from kr where price>260;
+	例子：查询kr表中名字不是heyga的所有信息
+	select * from kr where pname <>'heyga';
+	select * from kr where pname !='heyga';
+	b2.关系运算符
+		and
+		or
+		not
+	例子:查询kr表中价格小于等于250并且名字是simida的所有信息
+	select * from kr where price <=250 and pname='simida';
+	例子：查询kr表中名字是simida或者heygor的所有信息
+	select * from kr where pname='simida' or pname='heygor';
+	b3.区间(btween..and..)
+	例子：查询价格范围在250和290之间的所有信息
+	select * from kr where price >=250 and price <=290;
+	select * from kr where price between 250 and 290;
+	
