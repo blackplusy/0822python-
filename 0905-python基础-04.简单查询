@@ -39,4 +39,23 @@
 	例子：查询价格范围在250和290之间的所有信息
 	select * from kr where price >=250 and price <=290;
 	select * from kr where price between 250 and 290;
-	
+	b3.模糊查询
+	当信息不完整时候使用。
+	like
+	_	一个字符
+	%	任意个字符
+	例子：查询kr表中名称以h开头的所有信息
+	select * from kr where pname like 'h%';
+	例子：查询kr表中以ga结尾的所有信息
+	select * from kr where pname like '%ga';
+	例子：查询kr表中名字是4个字符的所有信息
+	select * from kr where pname like '____';
+	b4.空值查询
+	空(null)没有任何数据类型，没有任何的值
+	不能用于比较和运算，查询时候使用is null或者is not null
+	例子：查询kr表中price为空的所有信息
+	select * from kr where price is null;
+	b5.in
+	在...里面（或的关系）
+	例子：查询kr表中名字是gaga或者baga的所有信息
+	select * from kr where pname in('gaga','baga');
