@@ -1,0 +1,77 @@
+1.数据库
+存数据的地方
+2.常见数据库
+关系型数据库
+	a.informix  IBM+HP 军、政、运、银 (小机)
+	b.db2	    IBM    军、政、云、银  
+	c.oracle    甲骨文 中大型企业
+	d.mysql     甲骨文 互联网公司    
+	e.sqlserver 微软
+非关系型数据库
+	a.mongodb   大数据、爬虫
+	b.redis     缓存、验证
+	c.cassandra facebook 
+
+3.mysql数据库
+a.安装mysql相关软件
+	安装mysql服务端
+	sudo apt-get install mysql-server (安装时后会提示输入新的数据库密码，不要以数字开头)
+	安装mysql的客户端
+	sudo apt-get install mysql-client 
+	安装相关的库文件
+	sudo apt-get install libmysqlclient-dev
+b.mysql基础
+	b1.服务
+	mysql的主服务：mysqld
+	检查mysql服务是否正常运行
+		ps -ef |grep mysqld
+	b2.端口
+	mysql的端口：3306
+		netstat -an | grep 3306
+	b3.管理员
+		root
+	b4.mysql的登录
+		mysql
+		mysql -u root -p   
+		管理员登录本地数据库
+		mysql -h 127.0.0.1 -u root -p
+		管理员登录IP为127.0.0.1的数据库
+	b5.mysql基础
+		数据库分为2部分：数据库软件、数据库的数据
+		常说的数据库是数据库数据
+		数据库都是由表(表格)组成
+		表由数据组成	
+	b6.基础命令
+		show databases;
+		查看当前有哪些数据库
+		select user();
+		查看当前用户用户名
+		select database();
+		查看当前数据库的名字
+		use mysql;
+		数据库切换为mysql
+		show tables;
+		查看当前数据库中有哪些表
+		select * from user;
+		select * from user\G;
+		查看user表中的所有数据
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
