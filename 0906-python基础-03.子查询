@@ -1,0 +1,35 @@
+c.左联和右联查询
+左联查询语法：
+select 列 from 左表 left join 右表 where 左表.列=右表.列;
+左联查询结果（左表中数据都有）：
+	内联查询结果+左表有、右表没有的右表显示为空
+create table a(
+	a int
+);
+create table b(
+	a int,
+	b char(10)
+);
+insert into a values(1),(2),(3);
+insert into b values(1,'a'),(2,'b'),(4,'d');
+select * from a left join b on a.a=b.a;
+右联查询语法(右表中所有数据都有)：
+select 列 from 左表 right join 右表 on 左表.列=右表.列;
+
+d.子查询
+一条SQL语句的执行依赖于另外一条SQL语句的执行结果
+例子：查询国家名字为China的城市名称
+1.查询国家表中国家名字是China的country_id
+select country_id from country where country='China';
+2.查询城市表中country_id为上面查询出来结果的city
+select city from city where country_id=23;
+子查询：
+select city from city where country_id=(select country_id from country where country='China');
+子查询可以应用在数据库中的新增、修改、删除、查询中
+注意：
+子查询分类单行子查询、多行子查询
+单行子查询，子句中返回的数据只有一个，使用等号即可
+多行子查询，子句中返回的数据可能有多个，使用in方式
+
+
+
