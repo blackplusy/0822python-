@@ -1,3 +1,24 @@
+练习：3、4、5
+3.insert into achievement values((select id from student wherw name='Robert'),80);
+4.update achievement set mark=87 where id=(select id from student where name='Rose');
+5. delete from achievement where id =(select id from student where name='Betty');
+delete from student where name='Betty';
+
+练习：1、2、3
+1.
+a.查询c表中满足条件的c#
+select c# from c where cn='税收基础';
+b.查询sc表中c#为上面查询出来结果的s#
+select s# from sc where c# in(select c# from c where cn='税收基础');
+c.查询s表中s#为上面查询出来结果的s#和sn
+select s#,sn from s where s# in (select s# from sc where c# in(select c# from c where cn='税收基础');
+2.
+select s# from sc where c#='C2';
+select sn,sd from s where s# in(select s# from sc where c#='C2');
+3.
+select sn,sd from s where s# in(select s# from sc where c#!='C5');
+
+
 e2.分组查询
 语法：
 select 列 from 表
