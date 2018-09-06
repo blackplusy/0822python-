@@ -1,0 +1,27 @@
+e.分组查询
+e1.分组函数(聚合)
+	max()
+	min()
+	avg()
+	sum()
+	count()
+分组函数通常和分组一起使用，也可以单独使用
+例子：查询payment表中最高金额，最低金额，平均金额
+select max(amount),min(amount),avg(amount) from payment;
+
+e2.分组查询
+语法：
+select 列 from 表
+	[where 条件]
+		group by 分组条件
+			[having 分组后过滤条件];
+
+例子：
+查询city表中每个counrty_id下有多少个城市的名字?
+select country_id,count(city) from  city group by country_id;
+
+例子：
+查询city表中每个counrty_id下有多少个城市的名字,要求显示国家名字
+注意：如果是题目分组+多表查询先进行关联再进行分组
+select  co.country,count(c.city) from city c,country co
+where c.country_id=co.country_id
