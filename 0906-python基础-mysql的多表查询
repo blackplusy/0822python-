@@ -1,0 +1,56 @@
+1.多表查询
+补充：mysql中导入sakila数据库
+1>下载sakila数据库
+2>解压压缩包
+3>进入到解压目录
+4>管理员用户登录
+5>执行导入
+	source sakila-schema.sql;
+	source sakila-data.sql;
+6>测试
+	use sakila;
+	show tables;
+a.迪卡尔积
+两张表不做任何关联产生的数据，导致数据量成倍增加
+select count(*) from city;
+select count(*) from country;
+select count(*) from city,country;
+为了避免产生无效数据所以会使用内联查询，左联查询、右联查询
+
+b.内联查询
+判断关联列的方法：
+1< 列名一致
+2< 作用一致
+3< 主外键关系
+语法：
+select 列 from 表1 ，表2 where 表1.列=表2.列;
+select 列 from 表1 inner join 表2 on 表1.列=表2.列;
+例子：查询国家名称是China的城市名称
+分析：
+分析表：
+	country
+	city
+分析列：
+	country  country
+	city     city
+关联：
+	select * from city,country
+	where city.country_id=country.country_id;
+过滤：
+	select city from city,country
+	where city.country_id=country.country_id
+	and country='China';
+例子：查询城市名称是Sanya的国家名称
+分析表：
+	city
+	country
+分析列：
+	city
+	country
+关联：
+	select * from city c,country co
+	where c.country_id=co.country_id;
+过滤：
+	select co.country from city c,country co
+        where c.country_id=co.country_id
+	and c.city='Sanya';
