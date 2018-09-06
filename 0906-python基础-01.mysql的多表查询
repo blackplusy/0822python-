@@ -1,5 +1,9 @@
 1.多表查询
 补充：mysql中导入sakila数据库
+下载地址
+https://dev.mysql.com/doc/index-other.html
+表结构说明
+http://www.mamicode.com/info-detail-555168.html
 1>下载sakila数据库
 2>解压压缩包
 3>进入到解压目录
