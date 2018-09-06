@@ -1,0 +1,48 @@
+e2.分组查询
+语法：
+select 列 from 表
+	[where 条件]
+		group by 分组条件
+			[having 分组后过滤条件];
+
+例子：
+查询city表中每个counrty_id下有多少个城市的名字?
+select country_id,count(city) from  city group by country_id;
+
+例子：
+查询city表中每个counrty_id下有多少个城市的名字,要求显示国家名字
+注意：如果是题目分组+多表查询先进行关联再进行分组
+select  co.country,count(c.city) from city c,country co
+where c.country_id=co.country_id
+group by co.country;
+
+
+where和having
+where  分组前进行过滤，不能直接跟分组函数
+having 分组后进行过滤，可以直接跟分组函数
+
+例子：
+查询city表城市名称超过20的country_id是？
+select country_id from city group by country_id having count(city)>20;
+
+多分组
+select 列 from 表 group by 分组条件1,分组条件2;
+
+f.排序
+select 列 from 表 where 条件 group by 分组条件 having 分组后过滤 order by 排序条件;
+顺序：从小到大
+order by 列 asc
+order by 列
+倒序：从大到小
+order by 列 desc
+例子：查询country表中所有数据，按照country_id从大到小进行排列
+select * from country order by country_id desc;
+例子：查询city表中所有数据，按照country_id顺序排列
+select × from city order by country_id;
+
+g.分页查询
+limit
+查询city表中前10条数据
+select * from city limit 10;
+查询city表中10-15条数据
+select * from city limit 10,5;
