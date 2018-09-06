@@ -58,3 +58,16 @@ select 列 from 表1 inner join 表2 on 表1.列=表2.列;
 	select co.country from city c,country co
         where c.country_id=co.country_id
 	and c.city='Sanya';
+1.select s#,grade from sc where c#='C2';
+2.select sname from s where sname like 'D%';
+3.select  s.s#,s.sname  from s,sc,c where s.s#=sc.s# and sc.c#=c.c# and c.cname='Maths';
+4.select s# from sc where c#='C2' or c='C4';
+
+1.select s.name  from student s,achievement a where s.id=a.id and a.mark>85;
+2.select count(distinct(id)) from achievement where mark>=90;
+3.insert into achievement  values(7,80);
+4.update achievement set mark=87 where id=3;
+5.delete from achievement where id=6;
+  delete from student where name='Betty';
+
+
