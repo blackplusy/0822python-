@@ -94,7 +94,7 @@ f.查询表达式
 	$type
 	double 1
 	string 2
-	object 3
+	pbject 3
 	array  4
 	binary data 5
 	object id 7
@@ -102,7 +102,26 @@ f.查询表达式
 	date	  9
 	null      10
         db.xiyouji.find({age:{$type:2}})
+g.文档的修改
+	db.集合.update(查询表达式，新值，选项)
+	全部替换文档(新文档替换旧文档)
+	db.xiyouji.update({name:'niumo'},{age:100})
+	修改指定文档
+	db.xiyouji.update({name:'5kong'},{$set:{jingli:'memeda'}})
+	删除某个列
+	db.xiyouji.update({name:'5kong'},{$unset:{jingli:'memeda'}})
+	重命名某个列
+	db.xiyouji.update({name:'gaga'},{$rename:{'age':'nialing'}})
+	增长某个列
+	db.xiyouji.update({name:'tai2'},{$inc:{age:100}})
+	注意：修改如果找到匹配只修改1行，如果需要修改多行使用multi选项
+	db.xiyouji.update({age:20},{$set:{age:100}},{multi:true})
 
+h.文档的删除
+	删除指定文档
+	 db.xiyouji.remove({name:'tai2'})
+	删除所有文档
+	db.xiyouji.remove({})
 
 
 
