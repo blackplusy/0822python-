@@ -94,7 +94,7 @@ f.查询表达式
 	$type
 	double 1
 	string 2
-	pbject 3
+	object 3
 	array  4
 	binary data 5
 	object id 7
