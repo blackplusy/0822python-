@@ -43,6 +43,32 @@ d.基础命令
 	db.startup_log.find()
 		  查看startup_log的所有文档
 
+c.CURD(增删改查)
+	文档的新增
+	db.xiyouji.insert({name:'8jie',age:18})
+	文档的查看
+	db.xiyouji.find({age:18})
+	文档的修改
+	db.xiyouji.update({name:'5kong'},{$set:{name:'kingkong'}})
+	文档的删除
+	db.xiyouji.remove({name:'kingkong'})
+
+d.文档的新增
+	新增普通文档
+	db.xiyouji.insert({name:'nezha'})
+	新增文档指定_id
+	db.xiyouji.insert({_id:0,name:'tai2',age:500})
+	新增内嵌文档
+	db.xiyouji.insert({'name':'5kong',jingli:{kill:100,hit:1}})
+	新增多个文档
+	db.xiyouji.insert([{name:'2lang'},{name:'puti'},{name:'yudi'}])
+
+
+
+
+
+
+
 
 
 
