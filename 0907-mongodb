@@ -63,6 +63,49 @@ d.文档的新增
 	新增多个文档
 	db.xiyouji.insert([{name:'2lang'},{name:'puti'},{name:'yudi'}])
 
+e.文档的查询
+	查询所有文档的内容
+	db.xiyouji.find()
+	查询文档指定属性
+	db.xiyouji.find({name:'8jie'},{age:1,_id:0})
+	查询所有文档显示指定属性
+	db.xiyouji.find({},{_id:0})
+
+f.查询表达式
+	比较
+	$lt   小于
+	$lte  小于等于
+	$gt   大于
+	$gte  大于等于
+	$ne   不等于
+	$in   在..里面
+	db.xiyouji.find({age:{$gt:200}})
+	db.xiyouji.find({name:{$ne:'8jie'}})
+	db.xiyouji.find({name:{$in:['2lang','puti']}})
+	关系
+	$and  同时满足
+	$or   满足一个即可
+	db.xiyouji.find({$and:[{age:{$lt:100}},{name:'8jie'}]})
+	db.xiyouji.find({$or:[{name:'2lang'},{name:'puti'}]})
+	存在性
+	$exists
+	db.xiyouji.find({age:{$exists:1}})
+	数据类型判断
+	$type
+	double 1
+	string 2
+	pbject 3
+	array  4
+	binary data 5
+	object id 7
+	boolean   8
+	date	  9
+	null      10
+        db.xiyouji.find({age:{$type:2}})
+
+
+
+
 
 
 
