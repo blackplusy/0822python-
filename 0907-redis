@@ -1,127 +1,51 @@
-mongodb
-非关系型数据库
-存储数据是以bson形式存在
+1.安装和部署
+sudo apt-get install redis-server
+检查进程
+ps -ef |grep redis
+检查端口
+netstat -an |grep 6379
 
-a.mongodb的安装
-sudo apt-get install mongodb
-mongodb官网：
-https://www.mongodb.com/
+2.常见的数据类型
+字符串
+哈希
+列表
+集合
 
-b.mongo的服务
-mongod 服务器服务
-mongo  客户端服务
-补充：mongodb的端口是27017
-检查服务：
-	ps -ef |grep mongod
-检查端口：
-	netstat -ntlup |grep 27017
+3.字符串
+redis-cli
+set name 'wukong' 设置字符串
+get name          查看字符串
+注意：nil 代表没有该字符串对应的值
+incr name         增加值
 
-c.mongodb的登录
-	mongo
-	登录本地test数据库
-	mongo 127.0.0.1/admin
-	登录IP为127.0.0.1的admin数据库
-	mongo 127.0.0.1:27017/admin
-	登录IP为127.0.0.1的端口27017的admin数据库
+4.列表
+lpush mylist 1    左侧增加
+rpush mylist 3    右侧增加
+lrange mylist 0 3 查看列表中信息0开始3结束
 
-d.基础命令
-	mysql     mongodb
-	数据库    数据库
-	表        集合
-	数据      文档
-	mongodb数据库是由集合组成
-	mongodb的集合是由文档组成
-	db        查看当前数据库的名字
-	show databases
-	show dbs
-		  查看当前有哪些数据库
-	use  local
-		  数据库切换为local
-	show tables
-	show collections
-		  查看当前数据库有哪些集合
-	db.startup_log.find()
-		  查看startup_log的所有文档
+5.集合
+sadd uset 'one'  向集合中添加元素
+smembers uset    查看集合中元素
+sunion   pset  uset 两个集合左union
 
-c.CURD(增删改查)
-	文档的新增
-	db.xiyouji.insert({name:'8jie',age:18})
-	文档的查看
-	db.xiyouji.find({age:18})
-	文档的修改
-	db.xiyouji.update({name:'5kong'},{$set:{name:'kingkong'}})
-	文档的删除
-	db.xiyouji.remove({name:'kingkong'})
+6.哈希
+hmset user:001 password 1234 age 18  添加
+hgetall user:001  查看
+hset user:001 age 200  修改
 
-d.文档的新增
-	新增普通文档
-	db.xiyouji.insert({name:'nezha'})
-	新增文档指定_id
-	db.xiyouji.insert({_id:0,name:'tai2',age:500})
-	新增内嵌文档
-	db.xiyouji.insert({'name':'5kong',jingli:{kill:100,hit:1}})
-	新增多个文档
-	db.xiyouji.insert([{name:'2lang'},{name:'puti'},{name:'yudi'}])
+7.发布、订阅
+定阅者
+127.0.0.1:6379> subscribe mychin
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "mychin"
+3) (integer) 1
 
-e.文档的查询
-	查询所有文档的内容
-	db.xiyouji.find()
-	查询文档指定属性
-	db.xiyouji.find({name:'8jie'},{age:1,_id:0})
-	查询所有文档显示指定属性
-	db.xiyouji.find({},{_id:0})
-
-f.查询表达式
-	比较
-	$lt   小于
-	$lte  小于等于
-	$gt   大于
-	$gte  大于等于
-	$ne   不等于
-	$in   在..里面
-	db.xiyouji.find({age:{$gt:200}})
-	db.xiyouji.find({name:{$ne:'8jie'}})
-	db.xiyouji.find({name:{$in:['2lang','puti']}})
-	关系
-	$and  同时满足
-	$or   满足一个即可
-	db.xiyouji.find({$and:[{age:{$lt:100}},{name:'8jie'}]})
-	db.xiyouji.find({$or:[{name:'2lang'},{name:'puti'}]})
-	存在性
-	$exists
-	db.xiyouji.find({age:{$exists:1}})
-	数据类型判断
-	$type
-	double 1
-	string 2
-	pbject 3
-	array  4
-	binary data 5
-	object id 7
-	boolean   8
-	date	  9
-	null      10
-        db.xiyouji.find({age:{$type:2}})
-g.文档的修改
-	db.集合.update(查询表达式，新值，选项)
-	全部替换文档(新文档替换旧文档)
-	db.xiyouji.update({name:'niumo'},{age:100})
-	修改指定文档
-	db.xiyouji.update({name:'5kong'},{$set:{jingli:'memeda'}})
-	删除某个列
-	db.xiyouji.update({name:'5kong'},{$unset:{jingli:'memeda'}})
-	重命名某个列
-	db.xiyouji.update({name:'gaga'},{$rename:{'age':'nialing'}})
-	增长某个列
-	db.xiyouji.update({name:'tai2'},{$inc:{age:100}})
-	注意：修改如果找到匹配只修改1行，如果需要修改多行使用multi选项
-	db.xiyouji.update({age:20},{$set:{age:100}},{multi:true})
-
-h.文档的删除
-	删除指定文档
-	 db.xiyouji.remove({name:'tai2'})
-	删除所有文档
-	db.xiyouji.remove({})
+发布者
+127.0.0.1:6379> publish mychin 'simida'
+(integer) 1
+127.0.0.1:6379> publish mychin 'heygor handsome!!!!'
+(integer) 1
 
 
 
@@ -135,21 +59,6 @@ h.文档的删除
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 
 
 
