@@ -1,0 +1,18 @@
+学习目标
+掌握python操作mongodb的方法
+
+课程内容
+a.python操作mongodb的方法
+
+
+a.python操作mongodb的方法
+	安装pymongo的模块
+	pip3 install  pymongo
+  import pymongo
+  #设置连接数据库的参数
+  conn=pymongo.MongoClient(host='127.0.0.1',port=27017)
+  #设置所需要操作的数据库
+  db=conn.test
+  db.xiyouji.insert({name:'gaga'})
+
+	
