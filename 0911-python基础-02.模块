@@ -1,0 +1,83 @@
+学习目标
+掌握模块的定义方法和使用方法
+
+课程内容
+a.模块定义
+b.模块使用方法
+c.os模块使用
+d.sys模块的使用
+e.模块的安装
+
+a.模块的定义
+python中模块是一个以.py结尾的文件
+模块可以把一个复杂的程序按照功能进行分开，分别存放在不同文件中进行使用
+公共模块存放在python的安装目录下的lib中
+
+b.模块的使用方法
+以.py结尾的文件
+import 直接导入方式
+导入函数必须加模块名字
+from ....import ....
+直接调用函数
+
+
+c.os模块的使用
+具有普遍操作系统功能
+模块使用前一定要导入
+os.system('ls')  #运行系统中的命令
+os.remove()      #删除系统中的文件
+os.getcwd()      #当前路径
+print(os.listdir('/opt')) #指定目录下所有文件和文件名
+print(os.path.split('/var/log/syslog')) #返回一个路径的目录和文件名
+print(os.path.isfile('/var/log/syslog')) #判断是否是文件
+os.path.isdir()  #判断是否是目录
+os.path.exists() #判断存在性
+
+d.sys模块
+import sys
+print(sys.version) #查看python版本号
+print(sys.path)    #查看python的搜索路径
+
+e.python模块的安装方法
+1.单文件模块
+2.多文件模块
+3.easy install 方式
+4.pip方式
+
+1.单文件模块
+安装方法：直接拷贝文件到指定目录$python_dir/Lib
+
+2.多文件模块
+安装方法：解压压缩包，进入到目录中执行python setup.py install
+
+3.easy install 方式
+easy_install 包的名字
+easy_install 包.egg
+
+4.pip方式
+系统中必须安装好pip
+sudo apt-get install python3-pip
+pip3 install bs4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
