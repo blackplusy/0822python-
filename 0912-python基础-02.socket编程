@@ -1,0 +1,86 @@
+学习目标
+掌握socket编程基本方法
+
+课程内容
+a.socket定义
+b.socket对象
+c.socket编程思路
+d.开发实例
+
+a.socket
+套接字，用于描述IP和地址端口，是通信链路句柄，应用程序通过套接字向网络中发出请求或者应答
+socket遵循‘一切皆为文件’思想，可以进行打开，读取，关闭
+socket和file区别
+file模块是针对指定文件进行打开，读写，关闭
+socket模块是针对服务器和客户端的socket进行打开，读写，关闭
+
+b.socket对象
+sk=socket.socket(socket.AT_INET,socket.socket_stream,0)
+参数1：地址蔟(IPV4,IPV6)
+参数2.：尅行(tcp\udp)
+
+c.socket编程思路
+c1.tcp服务端
+ 1.创建套接字，绑定套接字到本地IP和端口
+ 2.开始监听连接
+ 3.进入循环，不断接受客户端连接请求
+ 4.接受传来的数据，并且发送给对方数据
+ 5.传输完毕，关闭套接字
+
+c2.tcp客户端
+ 1.创建套接字，连接远程地址
+ 2.连接后发送数据和接收数据
+ 3.传输完毕后关闭套接字
+
+d.开发实例
+server端：
+#导入socket模块
+import socket
+#以元组的形式定义一个IP和端口
+ip_port=('127.0.0.1',9999)
+#创建对象并且进行绑定IP进行监听
+sk=socket.socket()
+#绑定地址到套接字
+sk.bind(ip_port)
+#开始监听传入连接(可以挂起的最大连接数)
+sk.listen(5)
+
+while True:
+        print('server waiting for u!!!!')
+        #conn代表客户端和服务端建立连接后的通信链路
+        conn,addr=sk.accept()#accpet代表阻塞方式，没有收到连接请求就不会向下执行
+        #接受客户端发来的信息
+        client_data=conn.recv(1024)
+        print(client_data)
+        #回复消息
+        conn.sendall(('server reviced your msg!!!').encode())
+        conn.close()
+
+client端
+import socket
+ip_port=('127.0.0.1',9999)
+
+sk=socket.socket()
+#连接address套接字，如果出错再说
+sk.connect(ip_port) #我和哪个ip端口建立连接
+sk.sendall(('server server im client!!!').encode())
+server_reply=sk.recv(1024)
+print(server_reply)
+sk.close()
+~                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
