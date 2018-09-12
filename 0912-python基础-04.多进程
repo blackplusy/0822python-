@@ -1,0 +1,32 @@
+学习目标
+掌握躲进成和多线程区别和常规操作
+
+课程内容
+a.multiprocessing(多进程)
+b.添加进程
+c.进程锁
+
+
+a.multiprocessing(多进程)
+弥补threading(多线程)中的gil问题
+
+b.添加进程
+注意：运用时候需要加一个定义main函数的语句
+(if __name__=='__main__')
+注意：python文件有2种使用方法
+1.作为脚本运行
+2.作为模块运行
+if __name=='__main__'的作用就是控制2中代码的执行过程，在....下的代码只有在作为脚本运行时候才会被执行，如果作为模块运行，不被执行
+
+import multiprocessing as mp
+
+def job(a,d):
+        print(a+d)
+
+if __name__=='__main__':
+        p1=mp.Process(target=job,args=(2,4))
+        p1.start()
+        p1.join()
+
+c.进程锁
+解决不同进程共享资源的问题，用进程锁来解决
