@@ -1,0 +1,119 @@
+学习目标
+掌握进程和线程的基本概念及应用方法
+
+课程内容
+a.进程和线程
+b.多线程
+
+a.进程和线程
+进程：就是正在运行的程序实例
+线程：进程中的一个实体，被系统独立调度分配的基本单位，线程自己不拥有系统资源，但是它可以和同属一个进程的线程共享资源
+
+进程和线程的区别：
+1.地址空间：进程内的一个执行单元，进程至少有一个线程，他们共享进程的地址空间，进程拥有自己独立的空间
+2.资源拥有：进程的资源分配和拥有的单位，同一个进程内线程共享进程资源
+3.线程是处理器调度的基本单位，进程不是
+4.二者均可以并发执行
+
+b.多线程(threading)
+加速程序及计算的有效方式
+b1.添加线程
+import threading
+print(threading.active_count()) #获取当前线程数量
+print(threading.current_thread())#查看当前运行的线程
+#添加线程
+def thread_job():
+        print('当前线程是%s'%threading.current_thread())
+
+def thread_job2():
+        print('当前线程是%s'%threading.current_thread())
+
+thread=threading.Thread(target=thread_job)
+thread1=threading.Thread(target=thread_job2)
+thread.start()
+thread1.start()
+b2.join功能
+#如果不加join，程序输出混乱，执行完全取决于两个线程的执行速度，完全有可能t2结束后出现在finish之前，通过join进行控制
+
+import threading
+import time
+def t1():
+        print('t1开始了')
+        for i in range(10):
+                time.sleep(0.1)
+        print('t1结束')
+
+def t2():
+        print('t2开始')
+        print('t2结束')
+
+th1=threading.Thread(target=t1)
+th2=threading.Thread(target=t2)
+th1.start()
+th2.start()
+th2.join()
+th1.join()
+print('finished')
+~                   
+b3.gil（global interprter lock）
+python完全支持多线程编程，是现代妈时候完全并行是不安全的，通过会有意个全局解释器锁进行保护，确保任何时候只有一个线程在执行，gil锁最大问题就是python多线程程序不能利用多核cpu优势
+
+b4.线程锁
+lock在不同线程中通向同一内存时候，能够确保互相之间不影响，使用lock方法实在每个线程执行运行修改内存之前，执行lock.aquire()将内存上锁，却白当前线程执行时候，内存不会被其他线程访问，执行运算完毕后，使用lock.release()打开锁，保证其他线程可以使用该内存
+
+import threading
+def job1():
+        global A,lock
+        lock.acquire()
+        for i in range(10):
+                A+=1
+                print('job',A)
+        lock.release()
+
+def job2():
+        global A,lock
+        lock.acquire()
+        for i in range(10):
+                A+=10
+                print('job2',A)
+        lock.release()
+
+lock=threading.Lock()
+A=0
+t1=threading.Thread(target=job1)
+t2=threading.Thread(target=job2)
+t1.start()
+t2.start()
+t2.join()
+t1.join()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
