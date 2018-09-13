@@ -1,0 +1,44 @@
+软件安装基础
+
+rhel的软件安装包都是以.rpm结尾
+rhel的软件包通常是在光盘的Server目录下
+安装命令
+rpm -ivh 软件包
+
+软件安装流程
+1.安装操作系统
+2.关闭防火墙
+	service iptables stop(关闭防火墙)
+	service iptables status(查看防火墙状态)
+	service iptables start(开启防火墙)
+3.关闭selinux
+	vim  /etc/selinux/config
+	SELINUX=disabled
+4.设置ip	
+	/etc/sysconfig/network-scripts/ifcfg-eth0 
+5.设置主机名
+	/etc/sysconfig/network
+	HOSTNAME=test.server.com
+	重启系统后生效
+6.绑定主机名
+	/etc/hosts
+	192.168.1.12  test.server.com
+7.加载光驱
+	设置--cd/dvd--使用iso映像--选择安装镜像--save
+8.挂载光驱
+	mount -o loop /dev/scd0  /mnt
+9.进入到软件所在目录
+	cd /mnt/Server/
+10.搜索相关软件包(vsftpd)
+	ls | grep vsftp
+11.安装软件
+	 rpm -ivh vsftpd-2.0.5-16.el5.i386.rpm 
+12.启动服务
+	service vsftpd start
+	/etc/init.d/vsftpd start
+13.测试
+	浏览器中输入
+	ftp://192.168.1.12
+14.补充
+	需要共享的文件复制到/var/ftp/
+	
