@@ -1,160 +1,146 @@
-﻿<p>
-1、载入光驱，进入光驱<br/><br/>
-<b>[root@localhost /]# mount /dev/cdrom /mnt/</b>  <br/><br/>
-mount: block device /dev/cdrom is write-protected, mounting read-only  <br/><br/>
-[root@localhost /]# cd /mnt/Server/<br/><br/>
-[root@localhost Server]# ls<br/><br/>
-</p>
+1、载入光驱，进入光驱
 
-<p>
-2、安装apache<br/><br/>
+[root@localhost /]# mount /dev/cdrom /mnt/ 
 
-<b>[root@localhost Server]# rpm -ivh postgresql-libs-8.1.11-1.el5_1.1.i386.rpm </b><br/><br/>
-warning: postgresql-libs-8.1.11-1.el5_1.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/><br/>
-Preparing...                ########################################### [100%]<br/><br/>
-   1:postgresql-libs        ########################################### [100%]<br/><br/>
+mount: block device /dev/cdrom is write-protected, mounting read-only 
 
-<b>[root@localhost Server]# rpm -ivh apr-1.2.7-11.el5_3.1.i386.rpm </b><br/><br/>
-warning: apr-1.2.7-11.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/><br/>
-Preparing...                ########################################### [100%]<br/><br/>
-   1:apr                    ########################################### [100%]<br/><br/>
-<b>[root@localhost Server]# rpm -ivh  apr-util-1.2.7-7.el5_3.2.i386.rpm </b><br/><br/>
-warning: apr-util-1.2.7-7.el5_3.2.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/><br/>
-Preparing...                ########################################### [100%]<br/><br/>
-   1:apr-util               ########################################### [100%]<br/><br/>
+[root@localhost /]# cd /mnt/Server/
 
-<b>[root@localhost Server]# rpm -ivh httpd-2.2.3-31.el5.i386.rpm </b><br/><br/>
-warning: httpd-2.2.3-31.el5.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/><br/>
-Preparing...                ########################################### [100%]<br/><br/>
-   1:httpd                  ########################################### [100%]<br/><br/>
+[root@localhost Server]# ls
 
+2、安装apache
 
-<div>
-<div>3、启动apache服务</div>
-[root@localhost Server]# service httpd restart<br/>
-Stopping httpd:                                            [FAILED]<br/>
-Starting httpd:                                            [  OK  ]<br/><br/>
-</div>
-</p>
+[root@localhost Server]# rpm -ivh postgresql-libs-8.1.11-1.el5_1.1.i386.rpm 
 
-<p>
-<div>4、安装svn</div>
-<div>
-<b>[root@localhost Server]# rpm -ivh subversion-1.4.2-4.el5_3.1.i386.rpm</b> <br/>
-warning: subversion-1.4.2-4.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/>
-Preparing...                ########################################### [100%]<br/>
-   1:subversion             ########################################### [100%]<br/>
-</div><br/>
-<div>
-<b>[root@localhost Server]# rpm -ivh mod_dav_svn-1.4.2-4.el5_3.1.i386.rpm</b> <br/>
-warning: mod_dav_svn-1.4.2-4.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186<br/>
-Preparing...                ########################################### [100%]<br/>
-   1:mod_dav_svn            ########################################### [100%]<br/>
-</div><br/>
-<div>
-检测svn模块，一定要有以下这两个模块，否则svn安装失败<br/>
-[root@localhost Server]# ls /etc/httpd/modules/ | grep svn<br/>
-mod_authz_svn.so<br/>
-mod_dav_svn.so<br/>
-</div>
-</p>
+warning: postgresql-libs-8.1.11-1.el5_1.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
 
-<p>
-<div>5、配置svn</div>
-<div>5.1、备份httpd.conf文件</div>
-<div>[root@localhost Server]# cd /etc/httpd/conf<br/>
-[root@localhost conf]# ls<br/>
-httpd.conf  magic<br/>
-[root@localhost conf]# cp httpd.conf httpd.conf.old<br/><br/>
-<div>编辑httpd.conf文件，增加以下两行代码:</div>
-LoadModule dav_svn_module modules/mod_dav_svn.so<br/>
-LoadModule authz_svn_module modules/mod_authz_svn.so<br/><br/>
+Preparing... ########################################### [100%]
 
-<div>5.2、创建svn库</div>
-<div>
-[root@localhost conf]# cd /opt/<br/>
-[root@localhost opt]# mkdir -p svn/project<br/>
-[root@localhost opt]# ls<br/>
-svn<br/>
-[root@localhost opt]# cd svn/<br/>
-[root@localhost svn]# ls<br/>
-project<br/>
-</div>
-</div><br/>
+1:postgresql-libs ########################################### [100%]
 
-<div>5.3、用svnadmin命令创建svn仓库</div>
-<div>
-[root@localhost svn]# svnadmin create project/TSS<br/>
-[root@localhost svn]# cd project/<br/>
-[root@localhost project]# ls<br/>
-TSS<br/>
-</div><br/>
+[root@localhost Server]# rpm -ivh apr-1.2.7-11.el5_3.1.i386.rpm 
 
-<div>5.4、创建用户文件并添加用户(用htpasswd命令添加用户并设置密码)</div>
-<div>
-<b>[root@localhost svn]# htpasswd -c passwd.conf liangxianfu</b><br/>
-New password: <br/>
-Re-type new password: <br/>
-Adding password for user liangxianfu<br/>
-<b>追加一个用户<br/>[root@localhost svn]# htpasswd -m passwd.conf liangxianfu2</b><br/>
-New password: <br/>
-Re-type new password: <br/>
-Adding password for user liangxianfu2<br/>
-[root@localhost svn]# <br/>
-</div><br/>
+warning: apr-1.2.7-11.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
 
-<div>5.5、建立控制文件</div>
-<div>
-[root@localhost svn]# ls<br/>
-authz.conf  passwd.conf  project<br/>
-[root@localhost svn]# touch authz.conf<br/><br/>
+Preparing... ########################################### [100%]
 
-<div>编辑authz.conf文件，增加以下内容</div>
-[groups]<br/>
-admin=liangxianfu<br/>
-develop=liangxianfu2<br/>
-[TSS:/]<br/>
-@admin=rw<br/>
-@develop=rw<br/>
-[/]<br/>
-*=rw<br/>
-</div><br/>
+1:apr ########################################### [100%]
 
-<div>5.5、编辑/etc/httpd/conf/httpd.conf文件，在文件末尾增加以下代码</div>
-&lt;Location /svn/&gt;<br/>
-     &nbsp;&nbsp;DAV svn<br/>
-     &nbsp;&nbsp;SVNParentPath /opt/svn/project/<br/>
-     &nbsp;&nbsp;AuthType Basic<br/>
-     &nbsp;&nbsp;AuthName "Subversion repository"<br/>
-     &nbsp;&nbsp;SVNListParentpath on<br/>
-     &nbsp;&nbsp;AuthUserFile /opt/svn/passwd.conf<br/>
-     &nbsp;&nbsp;AuthzSVNAccessFile /opt/svn/authz.conf<br/>
-     &nbsp;&nbsp;Require valid-user<br/>
-&lt;/Location&gt;<br/>
-RedirectMatch ^(/svn)$ $1/<br/><br/>
+[root@localhost Server]# rpm -ivh apr-util-1.2.7-7.el5_3.2.i386.rpm 
 
-<div>5.6、修改/opt/svn/project权限</div>
-<div>
-<b>[root@localhost opt]# ll</b><br/>
-total 4<br/>
-drwxr-xr-x 3 root root 4096 Aug 16 12:30 svn<br/>
-<b>[root@localhost opt]# chmod -R 777 svn/</b><br/>
-<b>[root@localhost opt]# ll</b><br/>
-total 4<br/>
-drwxrwxrwx 3 root root 4096 Aug 16 12:30 svn<br/>
-</div><br/>
+warning: apr-util-1.2.7-7.el5_3.2.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
 
-<div>5.7、启动 svn服务(就是启动Apache服务)</div>
-<div>
-<b>[root@localhost opt]# service httpd restart</b><br/>
-Stopping httpd:                                            [  OK  ]<br/>
-Starting httpd: [Fri Aug 16 12:40:14 2013] [warn] module dav_svn_module is already loaded, skipping
-[Fri Aug 16 12:40:14 2013] [warn] module authz_svn_module is already loaded, skipping
-                                                           [  OK  ]
-</div><br/>
+Preparing... ########################################### [100%]
 
-<div>5.8、在IE中输入地址访问linux下的svn服务器：http://172.11.1.211/svn<br/>
-输入用户名和密码，即可登录svn服务器</div>
-</p>
+1:apr-util ########################################### [100%]
 
+[root@localhost Server]# rpm -ivh httpd-2.2.3-31.el5.i386.rpm 
 
+warning: httpd-2.2.3-31.el5.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
+
+Preparing... ########################################### [100%]
+
+1:httpd ########################################### [100%]
+
+3、启动apache服务
+[root@localhost Server]# service httpd restart
+Stopping httpd: [FAILED]
+Starting httpd: [ OK ]
+
+4、安装svn
+[root@localhost Server]# rpm -ivh subversion-1.4.2-4.el5_3.1.i386.rpm 
+warning: subversion-1.4.2-4.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
+Preparing... ########################################### [100%]
+1:subversion ########################################### [100%]
+
+[root@localhost Server]# rpm -ivh mod_dav_svn-1.4.2-4.el5_3.1.i386.rpm 
+warning: mod_dav_svn-1.4.2-4.el5_3.1.i386.rpm: Header V3 DSA signature: NOKEY, key ID 37017186
+Preparing... ########################################### [100%]
+1:mod_dav_svn ########################################### [100%]
+
+检测svn模块，一定要有以下这两个模块，否则svn安装失败
+[root@localhost Server]# ls /etc/httpd/modules/ | grep svn
+mod_authz_svn.so
+mod_dav_svn.so
+5、配置svn
+5.1、备份httpd.conf文件
+[root@localhost Server]# cd /etc/httpd/conf
+[root@localhost conf]# ls
+httpd.conf magic
+[root@localhost conf]# cp httpd.conf httpd.conf.old
+
+编辑httpd.conf文件，增加以下两行代码:
+LoadModule dav_svn_module modules/mod_dav_svn.so
+LoadModule authz_svn_module modules/mod_authz_svn.so
+
+5.2、创建svn库
+[root@localhost conf]# cd /opt/
+[root@localhost opt]# mkdir -p svn/project
+[root@localhost opt]# ls
+svn
+[root@localhost opt]# cd svn/
+[root@localhost svn]# ls
+project
+
+5.3、用svnadmin命令创建svn仓库
+[root@localhost svn]# svnadmin create project/TSS
+[root@localhost svn]# cd project/
+[root@localhost project]# ls
+TSS
+
+5.4、创建用户文件并添加用户(用htpasswd命令添加用户并设置密码)
+[root@localhost svn]# htpasswd -c passwd.conf liangxianfu
+New password: 
+Re-type new password: 
+Adding password for user liangxianfu
+追加一个用户
+[root@localhost svn]# htpasswd -m passwd.conf liangxianfu2
+New password: 
+Re-type new password: 
+Adding password for user liangxianfu2
+[root@localhost svn]# 
+
+5.5、建立控制文件
+[root@localhost svn]# ls
+authz.conf passwd.conf project
+[root@localhost svn]# touch authz.conf
+
+编辑authz.conf文件，增加以下内容
+[groups]
+admin=liangxianfu
+develop=liangxianfu2
+[TSS:/]
+@admin=rw
+@develop=rw
+[/]
+*=rw
+
+5.5、编辑/etc/httpd/conf/httpd.conf文件，在文件末尾增加以下代码
+<Location /svn/>
+  DAV svn
+  SVNParentPath /opt/svn/project/
+  AuthType Basic
+  AuthName "Subversion repository"
+  SVNListParentpath on
+  AuthUserFile /opt/svn/passwd.conf
+  AuthzSVNAccessFile /opt/svn/authz.conf
+  Require valid-user
+</Location>
+RedirectMatch ^(/svn)$ $1/
+
+5.6、修改/opt/svn/project权限
+[root@localhost opt]# ll
+total 4
+drwxr-xr-x 3 root root 4096 Aug 16 12:30 svn
+[root@localhost opt]# chmod -R 777 svn/
+[root@localhost opt]# ll
+total 4
+drwxrwxrwx 3 root root 4096 Aug 16 12:30 svn
+
+5.7、启动 svn服务(就是启动Apache服务)
+[root@localhost opt]# service httpd restart
+Stopping httpd: [ OK ]
+Starting httpd: [Fri Aug 16 12:40:14 2013] [warn] module dav_svn_module is already loaded, skipping [Fri Aug 16 12:40:14 2013] [warn] module authz_svn_module is already loaded, skipping [ OK ]
+
+5.8、在IE中输入地址访问linux下的svn服务器：http://172.11.1.211/svn
+输入用户名和密码，即可登录svn服务器
