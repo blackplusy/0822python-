@@ -42,3 +42,74 @@ rpm -ivh 软件包
 14.补充
 	需要共享的文件复制到/var/ftp/
 	
+
+自动安装(yum)
+自动安装mysql服务
+1.创建一个目录用于挂载
+	mkdir /data
+2.加载光驱
+3.挂载光驱到刚才创建的目录中
+	mount -o loop /dev/scd0 /data
+	注意：挂载完毕后可以用mount命令查看type是iso9660的信息就是光盘
+4.设置yum的配置文件
+	/etc/yum.repos.d/xxx.repo
+	[rhel-debuginfo]  标签名字
+	name=test         自动安装的名字
+	baseurl=file:///data/Server  自动安装命令到哪里去找软件包
+	enabled=1         是否开启自动安装
+	gpgcheck=0        是否开启软件包检查
+
+5.清理yum缓存
+	yum clean all
+6.查看可以自动安装的软件
+	yum list
+7.自动安装mysql相关组件
+	yum install mysql* -y
+8.启动mysql服务
+	service mysqld start
+9.测试
+	查看进程
+	ps -ef |grep mysqld
+	查看端口
+	netstat -an |grep 3306
+例子：
+ecshop
+开发语言：php
+web服务器     apache
+数据库服务器  mysqld
+
+1.设置好yum
+2.安装php相关组件
+	yum install php* -y
+3.安装apache相关组件
+	yum install http* -y
+4.安装mysql相关组件
+	yum install mysql* -y
+5.启动mysql服务
+	service mysqld start
+6.启动apache服务
+	service httpd start
+7.测试浏览器中输入linux的ip
+8.复制项目文件到/var/www/html中
+9.修改权限
+	chmod 777 -R /var/www/html/ecshop
+10.重启相关服务
+	service mysqld restart
+	service httpd restart
+11.浏览器中输入linux的ip/目录名按照提示进行访问
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
