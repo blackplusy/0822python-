@@ -1,0 +1,28 @@
+1.常用的web服务器
+        *nix:apache nginx tomcat jboss weblogic
+        windows:iis  apache
+
+2.常见web语言环境
+        *nix:php jsp perl python html cgi
+        windows:asp aspx php html cgi
+
+3.语言环境
+        静态：html ，css, js，图片等常规文件[服务器直接把这些文件返回给客户端]
+        动态：aspx，php，jsp，python，perl，cgi[代码经过服务器编译之后再把编译结果返回给客户端，一般动态语言都是结合>数据库一起使用]
+
+4.apache安装和使用
+a.apache的安装
+        安装部署好yum之后通过
+        yum install httpd -y
+        进行安装
+b.apache的常规配置
+        配置文件：/etc/httpd/conf/httpd.conf
+        Listen      apache的端口配置
+        LoadModule  apache的扩展组件
+        Include conf.d/*.conf 配置文件的路径
+        DocumentRoot "/var/www/html" 项目所在目录
+        目录中的属性
+                 Options Indexes FollowSymLinks  如果访问没有指定具体文件，又缺少默认页面就会列出目录
+                 order allow  deny               哪些用户可以访问，哪些用户不可以访问
+        ErrorLog logs/error_log                  默认就有，不需要进行修改[错误日志]
+        CustomLog logs/access_log common         原本是注释，可以打开进行使用
