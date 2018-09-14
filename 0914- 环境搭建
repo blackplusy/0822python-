@@ -26,3 +26,60 @@
 
 	6.测试
 		java -version
+
+
+1.tenorder项目
+jdk 1.7
+tomcat 7
+mysql 5.1 
+
+a.安装配置JDK
+b.安装tomcat
+	1.解压到指定目录
+	tar -xzvf apache-tomcat-7.0.90.tar.gz 
+	2.tomcat的目录结构
+		bin:   存放tomcat的命令
+		conf： 存放配置文件
+		lib：  存放库文件
+		logs:  存放日志
+		webapps：项目部署目录
+	3.启动tomcat服务
+		a.进入到tomcat的bin目录
+		b.执行startup.sh
+		c.测试
+			ps -ef |grep tomcat
+			netstat -an |grep 8080
+			浏览器访问linuxip:8080
+c.安装mysql相关服务
+	yum install mysql* -y
+	service mysqld start
+	补充：
+	mysqladmin -u root password 'test'
+	设置mysql管理员密码为test
+
+d.删除tomcat中的webapps目录中所有文件
+	rm -rf * 
+e.把tenorder项目传入apache的webapps中
+f.导入sql文件
+	目录切换到tenorder.sql所在目录
+	1.登录mysql
+	mysql -u root -p
+	2.创建数据库ten
+	create database ten;
+	3.进入到ten数据库
+	use ten;
+	4.导入相关数据
+	source tenorder.sql;
+g.修改数据库配置信息
+	WEB-INF\classes\database.properties
+	根据自己设置修改
+h.重启tomcat服务
+	进入到bin目录
+	执行shutdown.sh
+	执行startup.sh
+i.测试
+	浏览器中输入linuxip:8080/tenorder
+	
+
+
+
