@@ -101,6 +101,29 @@ NameVirtualHost *:80
     CustomLog logs/dummy-host.example.com-access_log common
 </VirtualHost>
 
+4.虚拟主机的目录的访问控制
+	Order allow,deny ==先允许，后拒绝
+	Allow from 192.168.1.4 允许1.4进行访问
+	Deny from all          
+	如果允许和拒绝的指定范围有重叠，deny优先。所以结果是所有人都访问不了
+	
+	Order deny，allow ==先拒绝，后允许，如果范围重叠，Allow优先生效
+	Allow from 192.168.1.4
+	Deny from all
+	
+
+	order allow,deny
+	allow from all
+	deny from 192.168.1.4 
+	总结：
+	Order allow，deny 拒绝小范围，允许大范围
+	Order deny，allow 允许小范围，拒绝大范围
+	 <Directory "/www/1">
+        	Order allow,deny
+        	Allow from 192.168.1.4
+        	Deny from all
+    	</Directory>
+
 
 
 
