@@ -81,6 +81,25 @@ b.apache配置最后增加
     CustomLog logs/dummy-host.example.com-access_log common
 </VirtualHost>
 
+3.基于域名的虚拟主机配置
+用域名区分不同的网站
+服务器只需要一个IP，默认端口使用80,可以搭建多个网站
+NameVirtualHost *:80
+取消注释
+
+<VirtualHost *:80>
+    DocumentRoot /www/2
+    ServerName test.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /www/1
+    ServerName bbs.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
 
 
 
