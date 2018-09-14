@@ -1,28 +1,71 @@
 1.常用的web服务器
-        *nix:apache nginx tomcat jboss weblogic
-        windows:iis  apache
+	*nix:apache nginx tomcat jboss weblogic
+	windows:iis  apache
 
 2.常见web语言环境
-        *nix:php jsp perl python html cgi
-        windows:asp aspx php html cgi
+	*nix:php jsp perl python html cgi
+	windows:asp aspx php html cgi
 
 3.语言环境
-        静态：html ，css, js，图片等常规文件[服务器直接把这些文件返回给客户端]
-        动态：aspx，php，jsp，python，perl，cgi[代码经过服务器编译之后再把编译结果返回给客户端，一般动态语言都是结合>数据库一起使用]
+	静态：html ，css, js，图片等常规文件[服务器直接把这些文件返回给客户端]
+	动态：aspx，php，jsp，python，perl，cgi[代码经过服务器编译之后再把编译结果返回给客户端，一般动态语言都是结合数据库一起使用]
 
 4.apache安装和使用
 a.apache的安装
-        安装部署好yum之后通过
-        yum install httpd -y
-        进行安装
+	安装部署好yum之后通过
+	yum install httpd -y
+	进行安装
 b.apache的常规配置
-        配置文件：/etc/httpd/conf/httpd.conf
-        Listen      apache的端口配置
+	配置文件：/etc/httpd/conf/httpd.conf
+	Listen      apache的端口配置
         LoadModule  apache的扩展组件
-        Include conf.d/*.conf 配置文件的路径
-        DocumentRoot "/var/www/html" 项目所在目录
-        目录中的属性
-                 Options Indexes FollowSymLinks  如果访问没有指定具体文件，又缺少默认页面就会列出目录
-                 order allow  deny               哪些用户可以访问，哪些用户不可以访问
-        ErrorLog logs/error_log                  默认就有，不需要进行修改[错误日志]
-        CustomLog logs/access_log common         原本是注释，可以打开进行使用
+	Include conf.d/*.conf 配置文件的路径
+	DocumentRoot "/var/www/html" 项目所在目录
+	目录中的属性
+		 Options Indexes FollowSymLinks  如果访问没有指定具体文件，又缺少默认页面就会列出目录
+		 order allow  deny               哪些用户可以访问，哪些用户不可以访问
+	ErrorLog logs/error_log                  默认就有，不需要进行修改[错误日志]
+	CustomLog logs/access_log common         原本是注释，可以打开进行使用
+c.虚拟主机配置
+	让apache同时运行多个不同的网站使用虚拟主机
+	注意：防火墙、selinux关闭
+	虚拟主机的分类：
+		基于IP地址的虚拟主机
+		基于端口的虚拟主机
+		基于域名的虚拟主机
+	注意：apache的配置文件中，包含“虚拟主机的配置”，原本默认的网站就不生效
+	1.基于ip地址的虚拟主机
+		服务器绑定多个IP
+		192.168.1.12
+		192.168.1.100
+	ifconfig eth0:1 192.168.1.100
+	修改配置文件，在apache主配置文件最后增加
+<VirtualHost 192.168.1.12:80>
+    DocumentRoot /www/1
+    ServerName test.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
+
+<VirtualHost 192.168.1.100:80>
+    DocumentRoot /www/2
+    ServerName test.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
+
+mkdir /www/{1,2} -p
+chown apache:apache /www/{1,2} -R
+index.html:
+<h1>heygor handsome ？？？</h1>
+
+
+<h1>heygor cute ？？？</h1>
+
+service httpd restart
+
+	
+
+
+
+
