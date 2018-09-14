@@ -63,8 +63,24 @@ index.html:
 <h1>heygor cute ？？？</h1>
 
 service httpd restart
+2.基于端口的虚拟主机配置
+a.Listen 需要添加
+        Listen 81
+b.apache配置最后增加
+<VirtualHost *:80>
+    DocumentRoot /www/2
+    ServerName test.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
 
-	
+<VirtualHost *:81>
+    DocumentRoot /www/1
+    ServerName test.server.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
+
 
 
 
