@@ -1,0 +1,28 @@
+1.软件下载
+	官网下载
+	JDK：java开发环境
+	JRE：java运行环境
+	系统位数：
+	i386 i686   32位操作系统
+	x86_64  x64 64位操作系统
+	补充：uname -a 查看系统版本信息
+	1.jdk软件包传入linux中
+		scp xxx.tar.gz root@192.168.1.12:/root
+
+	2.解压压缩包
+		tar -xzvf jdk-8u181-linux-i586.tar.gz 
+	3.重命名目录方便配置
+		mv jdk1.8.0_181/ jdk
+	4.java的配置
+		java -version 查看java版本
+		修改配置文件
+		vim /root/.bash_profile
+		PATH下面增加
+		export JAVA_HOME=/root/jdk
+		export PATH=$JAVA_HOME/bin:$PATH
+		export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar		
+	5.使环境变量生效
+		source ~/.bash_profile
+
+	6.测试
+		java -version
