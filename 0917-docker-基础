@@ -51,6 +51,128 @@ sudo docker search ubuntu
 sudo docker pull ubuntu:14
 
 
+13.dockerfile
+根据自己的需求及您镜像的制作
+1.创建空目录
+mkdir testfile
+2.进入到该目录
+cd testfile
+3.新建dockerfile，写入内容
+Dockerfile：
+
+FROM python:2.7
+
+WORKDIR /app
+
+ADD .   /app
+
+RUN pip install -r requirements.txt
+
+EXPOSE 80
+
+ENV NAME World
+
+CMD ["python","app.py"]
+
+
+requirements.txt:
+Flask
+Redis
+
+app.py:
+
+from flask import Flask
+from redis import Redis, RedisError
+import os
+import socket
+
+# Connect to Redis
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
+
+    html = "<h3>Hello {name}!</h3>" \
+           "<b>Hostname:</b> {hostname}<br/>" \
+           "<b>Visits:</b> {visits}"
+    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
+
+
+
+启动自己创建的容器
+sudo docker run -p 4000:80 friend 
+注意：-p 端口映射
+4000 ubuntu的对应端口
+80   容器内部端口
+
+
+测试
+浏览器中打开127.0.0.1:4000进行访问
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 云(openstack)：
 	云计算   100台  1cpu  2g  20g
