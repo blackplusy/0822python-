@@ -118,9 +118,33 @@ sudo docker run -p 4000:80 friend
 测试
 浏览器中打开127.0.0.1:4000进行访问
 
+14.镜像删除
+docker rmi 镜像名称\id
+
+
+15.容器删除
+sudo docker rm 容器id
+
+
+16.查看当前的容器
+sudo docker ps
+sudo docker os -a
+
+17.停止容器运行
+sudo docker stop 容器id、名字
 
 
 
+18.镜像上传至docker hub
+a.注册用户
+b.准备上传镜像
+c.登录dockerhub 
+	docker login
+c.docker pull 上传
+	sudo docker tag image username/repository:tag  打标
+		sudo docker tag busybox osimeno/test
+	sudo docker push username/repository:tag
+		sudo docker push osimeno/test
 
 
 
