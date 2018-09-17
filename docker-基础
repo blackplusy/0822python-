@@ -1,0 +1,59 @@
+1.docker
+开发人员和系统管理员使用容器开发、部署和运行应用程序的平台
+集装箱[水果、车、电子零件]
+使用linux容器部署应用称为容器化(lxc)
+
+2.优势
+灵活:复杂应用可以集装箱化
+轻量级：容器利用并且共享内核
+可互换：随时部署更新、升级
+便捷：本地构建、部署到云，在任何地方运行
+可扩展：可以增加并且自动分发容器副本
+
+3.docker的概念
+image      镜像
+container  容器
+通过运行image来启动容器
+一个image是一个可以执行的包，包括运行应用程序所需的所有代码、配置等
+容器是image被执行时候在存储器中的image
+
+4.docker版本
+docker ce  社区版
+docker ee  企业版
+
+5.ubuntu中安装
+sudo apt-get install docker.io
+
+6.docker的启动和关闭
+sudo /etc/init.d/docker start\stop
+
+7.查看docker版本
+sudo docker version
+sudo docker info 
+
+
+8.测试docker是否正常
+sudo docker run helloworld   
+注意：run  启动容器
+
+9.查看当前有哪些镜像(image)
+sudo docker image ls
+
+10.查看当前有哪些容器
+sudo docker container ls
+
+注意：  sudo docker run -it busybox  [linux学习环境]
+
+11.搜索相关镜像
+sudo docker search ubuntu
+
+12.下载镜像
+sudo docker pull ubuntu:14
+
+
+
+云(openstack)：
+	云计算   100台  1cpu  2g  20g
+	云存储   百度云  [极速秒传]
+虚拟化(vmware esxi,xen,kvm)
+大数据(apache hadoop):
