@@ -1,0 +1,24 @@
+前端部分
+HTML
+全称超文本标识语言
+开发工具: 记事本  Nodepad++  Dreamweaver  webStorm  HBuilder  Sublime
+HTML基本架构
+一个网站：编码:UTF-8
+		第一个页面:index.html
+<!-- 声明文档类型:html5  -->html注释
+Html标签:
+		基本都是双标签
+	   单标签:<img /> src属性
+			src里面是相对路径（与网页的相对地址）
+			绝对路径
+			<br>换行标签
+			要在网页中显示大于号，小于号不要直接敲, &lt;<  &gt;>   
+		
+	<h1>--<h6>是六级标题<h1>-<h3>
+	p标签是段落的意思
+	&nbsp;是空格
+	font字体标签，face字体  size 大小1-7  color颜色
+	<u>下划线
+	<i>倾斜
+	<b>加粗
+	链接 a   href=”链接的网页地址”  target=”_blank”新开一个标签
