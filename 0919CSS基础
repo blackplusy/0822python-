@@ -1,0 +1,60 @@
+
+	CSS
+  全称：层叠样式表 Cascading Style Sheets
+	W3C国际标准:
+		结构  html（图片，文字)
+		行为  js（动效)
+		表现  CSS图片美化，文化修饰
+	1、CSS基本格式:
+		html标签{
+			属性:属性值;
+		}
+		例子:
+		p{
+			font-family:"黑体";//字体名称
+			font-size:50px;//字号大小
+			color:red;//字体颜色
+			text-decoration:underline;//下划线
+		}
+		如果对于网页中有多个p,可以用
+		2、class选择器(类选择器)
+		定义:
+			.自定义的名字{
+				属性名：属性值
+			}
+		使用<p class="pa">
+		3、id选择器
+		定义 
+			#自定义的名字{
+				属性名:属性值
+			}
+		使用<p id="pa">
+    4、class选择器与id选择器的区别
+		class选择器可以引用无数个选择器，效果是这些选择器效果的叠加
+		id选择器只能引用1个，多个选择器一起使用任何效果都失效
+		#pa,.pa{
+			color:blue;
+		}
+		#pa和.pa这两选择器的语句是一样的
+    5、class选择器、id选择器 、标签选择器的优先级
+		标签选择器、class选择器、id选择器三种选择器，id选择器优先级最高,类别选择器其次，最后是标签选择器.
+		6、通用选择器: *{color:black}表示所有的标签全部都是黑色
+		7、伪类选择器 ：
+			选择器可以跟动作连在一起:
+			a:hover  鼠标经过的时候
+			a:link   正常链接的时候
+			a:visited  鼠标点击以后
+			a:active   鼠标正在点击时
+			html4只能作用在a上,html5以上动作可以定义在任何标签上
+8、随机函数:
+		Math.random() 0-1之间的小数，可能等于0,不等于1
+		产生0-10之间的随机整数
+		Math.floor(Math.random()*10)
+		产生1-10之间的随机整数 
+		Math.floor(Math.random()*10+1)  1-11
+		Math.floor(Math.random()*(大数-小数+1)+小数)
+		Math.floor向下取整 
+		Math.floor(4.5) =4
+		Math.floor(-4.5)=-5
+	9、onclick是对html元素发生的点击事件
+10、javascript：<script></script>中间的代码只执行一次
