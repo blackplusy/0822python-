@@ -1,0 +1,50 @@
+web服务器的搭建:
+	apache2
+	网页文件放在/var/www/html里面
+html标签:
+	1、a 链接
+	2、img 图片   src指示图片路径   width宽 height高 alt文字提示  单标签
+	3、br 单标签  换行
+	4、p段落 
+	5、h1-h6标题
+	6、b加粗
+	7、i 倾斜
+	8、u 下划线
+	9、hr水平线
+	10、列表
+		无标记 dl dt dd
+		有标记 无序 ul li
+			有序 ol li
+	11、表格布局
+		table tr td
+		行跨度  rowspan
+		列跨度  colspan
+	以上需要的技术：对网页全页面刷新
+	局部刷新（ajax)
+	12、框架:
+		框架集 frameset 不写在head和body里，自己独立标签
+		框架 frame
+		给frame框架做一个name的属性,在链接的时候做<a href="网页地址" target="frame的名字"></a>就可以实现框架的局部刷新
+	13、表单
+		<form>
+			<input type="text">单行文本框
+			<input type="password">密码框
+			<input type="radio">单选钮 取相同的名字才可以单选 checked="checked"默认被选中
+			<input type="checkbox">复选框  checked="checked"默认被选中
+			<input type="submit">提交
+			<input type="reset">复位
+			<input type="button">普通按钮
+			<select><option>下拉列表 option有selected默认被选中
+			<textarea>多行文本框 
+			<input type="hidden"/>隐藏域
+		form action提交的地址
+	             method 提交的方式   get方式：明文发送  发送内容在地址栏里 不安全  2M
+					post：暗文发送 内容在网页体里 加密处理 安全  没有限制
+			html5增加一些表单元素:
+				<input type="url">网址
+				<input type="email">邮箱
+				<input type="file">文件上传
+				<input type="color">颜色框
+				<input type="range">滑动条
+			required限制某个数据必须填写后上传
+		
