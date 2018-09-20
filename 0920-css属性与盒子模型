@@ -1,0 +1,50 @@
+CSS属性
+	字体属性
+		font-family:字体名称
+		font-size:字号
+		color:颜色
+		text-decoration：underline下划线
+		font-weight:bold;加粗
+		font-style:italic;倾斜
+		text-align:center;文字水平居中
+		line-height:行高(文字垂直居中，可以让line-height的高度是容器的高度)
+	背景属性
+		background:
+		background-color:背景颜色
+		background-image:url(图片地址)   背景图片
+		background-repeat: no-repeat背景图片不重复 
+				   repeat-x x轴重复 
+				   repeat-y y轴重复
+				   repeat默认 双向重复
+		background-position:背景图片的位置
+		CSS3：background-size:背景尺寸(把背景图片拉伸)
+	div标签,html定义的大范围的标签,就是一个容器,容器包含任意多个html标签,叫盒子
+	没有宽高
+	边框属性
+		边框粗细: border-width
+		边框颜色: border-color
+		边框样式: border-style :solid实线  dashed虚线  dotted点线   double 双线
+		border:1px solid red;
+		CSS3  圆角  border-radius:值
+		画圆:border-radius的值恰好是宽度的一半
+		画三角：
+			宽和高都是0
+			边框 width 决定了三角的大小
+			     style 固定solid
+			    color:哪个地方要显示三角，哪个地方有颜色，哪个地方不显示三角，哪个地方无颜色	
+				transparent透明色
+		画梯形 ：宽和高有值
+CSS盒子模型
+	html所有元素全是容器,理解成盒子
+	填充物 内边距  padding
+	盒子和盒子间的距离 外边距  margin
+	内容:html元素 content
+	边框: border:
+	margin: 1px 2px 3px 4px;上 右 下 左
+	margin:1px 2px 3px ;上1px 下3px 左右2px
+	margin:1px 2px;
+	margin:1px;
+	left左right右 top 上 bottom 下
+	css3
+		
+		
