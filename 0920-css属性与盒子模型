@@ -46,5 +46,16 @@ CSS盒子模型
 	margin:1px;
 	left左right右 top 上 bottom 下
 	css3
-		
+	<head>
+		 <meta name="keywords" content="个人，网站，我">
+
+		是百度搜索引挚能够搜索到的关键词
+		<meta name="Description" content=
+		指网站的描述
+		网站常见的图片格式： gif(最小)   png   jpg
+		html h1 -h6有的标签自动统治一行,div是统治一行，把这种标签叫块状元素(列表,div,p,h1)
+			有的标签与其它标签会和谐相处于一行,把这种标签叫行内元素(a img b i u)
+		把块状元素转换成行内元素: 用浮动
+		 float:left左浮动(float right)
+		后面的内容clear both清除浮动
 		
