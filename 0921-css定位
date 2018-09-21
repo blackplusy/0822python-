@@ -1,0 +1,21 @@
+前端页面优化的方法:
+	1、把图片变成精灵图,一次性加载
+		background-position
+布局的需要的一些常规语句
+	ul里面常用list-style:none去掉标记点
+CSS的定位
+	position:
+		static静态的，默认的position属性
+		relative相对定位,没有脱离文档流
+		absolute绝对定位,脱离文档流
+		只要设置relative absolute，就有left top属性 right,bottom属性
+		fixed固定的
+		inherit继承的，不太使用
+	z-Index:设置层次`
+		最大值:没有最大值 video只要video实现最大化,z-index失效
+		9999
+	relative+absolute布局方法
+
+		常常把外层定义成一个relative,里面的div定义一个absolute,可以保证里面div没有脱离文档
+	
+	
