@@ -1,0 +1,82 @@
+javascript	
+	1、基本数据类型:
+		Number 数值型
+		boolean 布尔型 true false
+		Object 对象
+		Array 数组
+		String 字符串
+		null 空的
+		undefined未定义的
+	2、基本语句
+		1、alert()弹出一个信息框 
+			alert(1/0)结果Infinity，无穷大
+			0.3-0.2___<___0.1
+			0.1+0.2___>___0.3
+		2、confirm()确认框
+			返回值是true或者false
+		3、输入框 prompt
+		4、网页上面输出内容 
+			document.write()
+		5、控制台输出
+			console.log()
+		js调试代码2种:
+			把信息alert出来
+			把信息console.log到控制台上
+	3、条件语句:
+		if(条件){}
+		写法：if (a==1){
+			console.log(12)
+		}
+		if(条件){}else{}
+		写法: if(a==1){
+				console.log(1);
+			}else{
+				console.log(2);
+			}
+		if(条件){}else if(条件）{}else{}
+		
+		switch语句
+		switch(变量值){
+			case 变量值的选择1:break;
+		}
+		
+		if和switch:
+			if要每条语句都做判断
+			switch只判断一次 
+	4、三元运算符（冒号运算符):
+		条件语句?语句1:语句2
+		条件语句成立走语句1,不成立走语句2
+		3+4>7?1+2:3+4=7
+		"3"+4>23?1+2:3-2=3
+	5、循环语句:
+		for
+			for(循环变量初值;条件;循环变量加值){
+			}
+			for(i=0;i<10;i++){
+				console.log(i);
+			}
+		while循环
+			while(条件){
+			}
+			i=0
+			while(i<10){
+				console.log(i);
+				i++;
+			}
+	6、js函数
+		function abc(){
+			
+		}
+		定义了一个abc的函数
+	7、js
+		根据id名字获取html的元素:
+			getElementById()
+		改属性  .属性
+		改css属性 style.css属性名  css属性名是用-连结的词，把-去掉，把后面的字母大写
+		改内容 innerText
+		js特效：(js轮播 js选项卡) js懒加载 js手风琴 js百叶窗
+		根据class名字选取元素
+			getElementsByClassName
+		根据标签的名字来选取元素
+			getElementsByTagName
+	
