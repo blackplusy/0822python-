@@ -1,0 +1,25 @@
+1、行内元素转成块状元素：display:block
+2、隐藏元素: 
+	一种：display:none隐藏,不占位 display:block显示
+	二种:占位 visibility:hidden 隐藏 visibility:visible显示
+闭包:
+	变量没有定义，向父级去找这个变量
+	外层是循环，很可能是循环结束的变量
+	js用es6里面的let
+4、css隐藏盒子的多余部分:overflow:hidden
+5、js有定时器，定时器作用将元素隔一段时间执行一次
+		setInterval(function(){
+		},毫秒数)
+		永远执行的定时器
+		手动停止 clearInterval
+		一次性的定时器
+			setTimeout
+6、基本轮播思路:
+	外面的盒子只显示一个图片大小，用overflow:hidden去覆盖掉超出盒子的图片
+	里面的盒子是几个图片水平伸展的效果，
+	外面盒子position:relative 里面的盒子position:absolute
+	用永久性定时器setInteval控制里面盒子的left值，使轮播产生走动的效果
+	用clearInterval停止计时器的方法停止到一个图片走完的位置，再过一段时间用一次性定时器setInterval启动
+
+		
+		
