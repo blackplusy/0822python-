@@ -1,0 +1,67 @@
+轮播：
+	取余是判断图片是否走到一个图片的结束
+	取整是判断图片是第几张索引
+js执行机制
+	js是一个单线程
+	遇到阻碍线程的会不理，除alert confirm prompt除外
+	异步的方式解决阻塞
+	setTimeout setInterval对线程有阻塞
+	Promise优先于setTimeout,setInterval
+	同时Promise是setTimeout的分水岭，Promise之前的setTimeout会优于Promise后面的setTimeout
+	如果Promise里面有setTimeout不做处理
+改:
+	后端:微服务化
+	前端:组件化
+js事件
+	onclick点击
+	onmousedown鼠标按下
+	onmouseup 鼠标抬起
+	onmouseover鼠标经过
+	onmouseout鼠标移开
+	onkeydown键盘按下
+	onkeyup键盘抬起
+重要：	onfocus 获得焦点
+	onblur失去焦点
+js数组:Array
+	new Array()产生空数组
+	arr=[1,2,3,4,5,6]
+	增
+		前增 unshift 后增: push  中间增:splice
+		splice格式
+		splice(索引位置，删除几个,后面增加的内容)
+	删
+		前删 shift   后删 pop   中间删  splice
+	改
+		arr[4]=10
+	查
+		正向查找 indexOf 从左向右找到匹配的第一个元素
+		反向查找 lastIndexOf  从右向左找到匹配的第一个元素
+		indexOf与lastIndexOf一样是表示当前元素在这个数组中或者没有或者有且只有一个
+		应用场合:论坛  微信
+	其它:
+		reverse把数组反向
+		join把数组转成字符串，参数是字符串的连接符
+		没有连接符默认是","
+		slice产生子数组
+		concat将两个数组连接
+	数组的复制
+		1、直接的方法
+			arr1=arr2   arr1=======>1 2 3  10 5 
+				    arr2 =======>
+			这种引用是地址引用
+		2、concat复制方法
+			arr1=arr2.concat()
+		3、slice复制方法 
+			arr1=arr2.slice()
+字符串的方法:
+		截取子串
+		substring substr slice
+		substring slice 取串从当前位置取到后面的位置之前的一个
+		substr从当前位置取后面的参数个数个串
+		把字符串转成数组:
+			split("")
+		1、反向输出:把字符转成数组，再反向，反向转成字符串
+		
+		2、查找当前字符串的a的个数
+	其它
+	
