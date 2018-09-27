@@ -1,0 +1,70 @@
+AJAX 
+	异步javascript和xml
+	xml html变形
+	网络上出现的键值对数据格式两种:
+	xml:用户自定义的文档标签
+		<book>
+			<author>三牧</author>
+			<name>一个人</name>
+			<publish-time>2018-09-01</publish-time>
+		</book>
+		
+	json:字典:
+		{'author':'三入','name':'一个人','publish-time':'20018-09-01'}
+	ajax优越性:
+		1、异步
+		2、局部刷新
+	javascript原生ajax
+		非ie对象;
+			XMLHttpRequest
+		步骤:1、定义xhr=new XMLHttpRequest
+		     2、xhr发出open方法，open参数:第一个方式get 第二个地址，第三个异步 true
+		     3、发送xhr send方法 
+		     4、监测xhr的变化:onreadystatechange=function(){
+			函数里  status==200
+				readyState=4
+			以上条件都满足，ajax成功
+			结果在responseText
+		原生ajax加载网上提供的一些资源，错误:
+			已阻止跨源请求：同源策略禁止读取位于 https://www.sojson.com/open/api/weather/json.shtml?city=%E6%B7%B1%E5%9C%B3 的远程资源。（原因：CORS 头缺少 'Access-Control-Allow-Origin'）。 <未知>
+
+			同源策略:指的是网站获取数据只能获取本域名内的数据	
+	jquery ajax
+		jsonp完成跨域
+		$.ajax({
+			url:'https://www.sojson.com/open/api/weather/json.shtml?city=%E6%B7%B1%E5%9C%B3';请求的地址
+			type:'get/post'请求方式
+			datatype:'jsonp'跨域请求json数据
+			success:function(data){
+			}成功之后的数据在 data
+			error:function(data){
+			}请求错误data有什么
+
+		})
+	$(function(){
+	});表示juery一加载就执行function()中的代码
+jquery重要的方法:
+	1、获取id
+		$("id名或者class名或者标签名")
+		$("#id")  $(".id")选取第一个类选择器  $("p")选取第一个标签
+		text()表示两个标签的文字
+		html()表示两个标签的代码
+		val()表示input框里的值
+		样式
+		css改变 css({‘样式名':'样式值 ’}）
+			举例 css({'color':'red'})
+		attr改变标签的属性
+		width(宽度值)
+		height(高度值)
+		animate动画
+		show()显示
+		hide()隐 藏
+		偶数 even
+		奇数 odd
+		opacity:透明度
+	2、jquery事件
+		click(function(){
+		});
+		其它事件都跟上述代码一样，
+		不同事件名不同，
+		相当于javascript事件去掉on
