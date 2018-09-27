@@ -1,0 +1,64 @@
+javascript其它对象
+	document文档对象
+	Math对象
+		Math.abs绝对值
+		Math.floor向下截取 Math.floor(-4.6)=-5
+		Math.ceil向上截取 Math.ceil(-4.6)=-4
+		Math.round四舍五入 Math.round(-4.6)=-5
+		Math.pow多少次方
+		Math.sqrt开方
+	Date对象
+		时间对象
+		new Date()取当前时间
+		getFullYear()取年
+		getMonth()取月
+		getDay()取星期
+		getDate()取天
+		getHours()小时
+		getSeconds()秒
+		getMinites()分钟
+		getTime()时间戳
+	
+	window对象
+		窗口
+		window.open打开一个窗口
+		window.close关闭一个窗口，一般情况关闭的都是window.open打开的
+	navigator对象
+		UserAgent输出用户使用平台的信息
+		if UserAgent.indexOf("Android")当前设备是Android手机
+		if UserAgent.indexOf("IOS")当前设备是苹果手机
+		if UserAgent.indexOf("ipad")当前设备是ipad
+	histroy历史对象
+		histroy.back回退一步
+		histroy.forward前进一步
+		histroy.go
+	location对象
+		地址
+		href="实现地址的跳转
+函数的柯里化
+	只接收一个参数的表现形式
+	如果有多个参数，实际是单参数的函数返回了一个带参数的函数
+	add(2,3)=5
+	add(2)(3)=5
+	
+	add(2)(3)(4)(5)(6)
+js面向对象
+	prototype实现面向现象三大特性:封装 继承 多态
+	js任何对象都有__proto__属性，都是通过这个属性指向其父类的__proto__属性，直到__proto__来自于object,这就像一个链式，prototype形成的链，这个js链叫原型链
+	js实现封装(ES5)
+		function Abc(){
+		} 
+	js继承 Cde.prototype=Abc.prototype
+	js多态:Array===>new Array()   =====>new Array(5)
+	定义属性:用this.属性名
+	定义方法 :prototype.方法名=function(){
+		}
+	
+h5   canvas画布 
+	1、canvas不能用css设置宽和高，如果用css设置宽和高,画布会被拉伸.
+	2、canvas画的图像不能自动删除
+		手动清除: clearRect
+	3、canvas里所有元素接收不到 onclick事件
+		canvas里面元素接收onclick事件，只能依靠坐标点
+	
+		
