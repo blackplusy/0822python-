@@ -102,6 +102,11 @@ django
 			然后同步
 				python manage.py makemigrations
 				python manage.py migrate
+			在项目文件夹下的项目文件夹下
+			__init__.py
+			加入一句:
+			import pymysql
+			pymysql.install_as_MySQLdb()
 	7、views.py
 		return 
 				HttpResponse（”直接跟字符串")
