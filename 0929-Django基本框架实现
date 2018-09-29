@@ -41,3 +41,86 @@ django
 			python3 manage.py migrate
 	(7)修改项目名称目录下的urls.py
 			url(r'user/',views.index)
+		访问的是views.index方法
+	(8)在应用的目录下:
+		views.py
+		 添加一个index:
+			def index(request):request是参数 
+				return HttpResponse（"ok");
+				返回给浏览器信息
+		执行这个django项目
+			在manage.py所在的目录下
+				python manage.py runserver
+	(9)模板的设置:
+		设置模板的路径 在项目文件夹的settings.py
+		在TEMPLATES={	}
+		DIRS里加模板的路径 os.path.join(BASE_DIR,'templates')
+		在应用的文件夹里有一个views.py
+		def index(request):
+			return render(request,'index.html')
+	(10)如何跟数据库建立联系
+		在数据库加入数据
+		利用django的后台
+				
+			建用户
+				python manage.py createsuperuser 
+			在我们自己的表中填数据，先注册
+				在应用下面的admin.py
+					导入一下models里面的类
+					admin.site.register(UserInfo)
+		在views.py做处理
+			先把对象全部显示，引入UserInfo
+				UserInfo.objects.all()相当于select * from userinfo
+				定义一个字典类的变量
+				context={'user':users}
+				传入render参数中，
+				return render(request,'index.html',context)
+				最后改模板
+					在模板中直接输出{{}}
+					{{传入参数字典的键名}}
+					如果键是一个列表
+					for循环遍历
+					{% for u in user(键名) %}
+					{%endfor%}endfor是必须有一个停止的信息
+					中间输出对象的属性
+					{{u.username}}
+					{{u.password}}
+	以上django按照工作原理的执行
+总结：
+	1、django-admin startproject 项目名
+	2、cd 项目名
+	3、django-admin startapp 应用名
+	4、按照mvt顺序，先写models（在应用的文件夹里)models.py
+		写类继承models.Model
+			class User(models.Model):
+				name=models.CharField(max_length=20)
+	5、存盘，改settings 
+			INSTALLED_APP=应用名
+			DATABASES=数据库mysql
+			参考上面
+	6、同步数据库:数据库里建一数据库:create database XXXX default charset=utf8;
+			然后同步
+				python manage.py makemigrations
+				python manage.py migrate
+	7、views.py
+		return 
+				HttpResponse（”直接跟字符串")
+				render(request,'网页',字典类变量)
+		(1)返回HttpResponse
+		(2)返回不带参的网页
+		(3)返回带参的网页: user=UserInfo.objects.all()
+	8、urls.py
+		url(r'user/',views.index)
+	9、settings.py模板
+			Dirs=[os.path.join(BASE_DIR,'templates')
+	10、建立templates文件夹，下面建一个网页
+		模板内输出{{user}}
+	11、执行
+		python manage.py runserver
+	12、额外加入数据
+		 python manage.py createsuperuser
+		在admin.py里加入一句话
+			admin.site.register(类名)
+	13、登陆后台
+		http://locahost:8000/admin
+				
