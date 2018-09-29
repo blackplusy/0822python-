@@ -1,0 +1,43 @@
+django
+ 1、mvc模式：
+	models模型
+	views视图
+	controller控制器
+2、django mvt模式
+	models模型
+	views视图 （controller控制器)
+	templates模板 
+3、django的工作原理
+	用户发送请求---------(http://www.163.com)----------->在django urls.py中找对应的地址-------->在django views中找对应的方法 ----------->处理models的操作--------->逻辑控制--------->在templates找到相应的视图模板 ---------->显示给用户处理结果视图
+4、django的安装 
+	pip3 install django
+5、django的项目创建
+	（1）创建django的项目
+		django-admin startproject 项目名称
+         (2)进入到项目名称的目录里面:
+		cd 项目名称
+	 (3)创建django的应用
+		django-admin startapp 运用名称
+	 (4)修改项目名称文件夹中的settings.py，连接数据库
+		i)INSTALLED_APPS={
+			运用名称
+		}
+		ii)DATABASES={
+		}
+		将 ‘ENGINE'改成mysql
+		'HOST'大写，数据库服务器的名称
+		'PORT'大写,数据库服务器的端口  3306
+		'USER'大写，数据库服务器的登陆名 root
+		'PASSWORD'大写，数据库服务器的密码 
+		'NAME'大写，数据库服务器的数据库名
+	（5）写models
+		定义一个类,models的类与数据库的表相对应，
+		class UserInfo(models.Model):
+			username=models.CharField(max_length=20)
+			max_length 最大长度
+			CharField相当于varchar(20)
+	(6)根据models产生数据库的表
+			python3 manage.py makemigrations
+			python3 manage.py migrate
+	(7)修改项目名称目录下的urls.py
+			url(r'user/',views.index)
