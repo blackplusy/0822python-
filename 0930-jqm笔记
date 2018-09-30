@@ -30,3 +30,11 @@
 	第二技术：列表
 		<div data-role="listview">
 		分隔符<div data-role="divider">
+	第三技术:按钮组
+		<div data-role="controlgroup"> 水平 data-type="horizontal"
+jqm注意的问题:
+	1、jqm正常情况下,head只加载一次，如果多次加载，需要在链接页面的时候做data-ajax="false"	
+	2、audio、video做jquery引用的时候，需要用[0]
+	3、不用jqm框架做了移动端的项目，<a>无效,引用jqm，不需要使用语法,<a>标签在手机上有效.
+
+	
