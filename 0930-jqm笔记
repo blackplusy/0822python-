@@ -1,0 +1,32 @@
+一、项目和应用
+	项目:整个程序 django-admin startproject
+	应用：项目中的模块 django-admin startapp (login cart order pay)
+	思考问题:正序思考   反向开发
+	models
+		models.CharField(max_length=20)
+		同步
+		python manage.py makemigrations
+		python manage.py migrate
+	views.py
+		return render(reuqest,'index.html',context)
+	templates:
+		html页面
+二、jqm jquery mobile
+	定义一个页面 <div data-role="page">
+	定义一个移动端头部<div data-role="header">
+	定义一个移动端中间内容部分<div data-role="content">
+	定义一个移动端尾部 <div data-role="footer">
+	需要样式data-theme=‘a-e'
+	需要锁定头部和尾部data-position="fixed"
+	需要做导航 :<div data-role="navbar">里面直接跟ul li
+	这样就可以形成jquery mobile的简单框架
+	第一技术：九宫格
+		<div class="ui-grid-a">一行两个元素平分
+		<div class="ui-grid-b">一行三个元素平分
+		<div class="ui-grid-c">一行四个元素平分
+		里面写 <div class="ui-block-a">
+			<div class="ui-block-b">
+			依次类推，遇到 <div class="ui-block-a">换行，但是不会根据字母顺序的有空白位置
+	第二技术：列表
+		<div data-role="listview">
+		分隔符<div data-role="divider">
