@@ -25,4 +25,27 @@ django重定向
 	有/是当前访问的路径是项目文件夹的路径
 	没有/是当前访问的路径就是当前路径
 查询用户是否存在
-	get可以查出用户,查找的时候如果用户没有报错，如果用户是
+	get可以查出用户,查找的时候如果用户没有报错，如果用户是多个也报错
+	filter可以查出用户,查找的时候不报错，如果没有是空的列表
+完善注册功能：
+	1、密码和确认密码的一致性
+	2、用户名不重复
+	3、后台向前台发送错误提示信息:通过字典return render(request,'index.html',context)
+	4、密码加密 
+		password字段是64位
+		pwd=md5()
+		pwd.update(password)
+		密文在pwd.hexdigest()
+完善登陆功能：
+	1、增加用户名和密码的相等.
+	2、提示用户名和密码错误
+	3、用户名不存在
+表单注释掉#'django.middleware.csrf.CsrfViewMiddleware',
+静态文件一定要在settings里面加:
+	STATICFILES_DIRS=[
+    		os.path.join(BASE_DIR,'static')
+	]
+扩展:
+	1、后端登陆注册验证码的识别
+	2、必须同意协议方可提交后写入数据库
+	3、写一个忘记密码的功能
