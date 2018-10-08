@@ -1,0 +1,28 @@
+针对于表单的分析思路：
+	需要提交的表单，我们提供一个地址,地址写在form表单的action属性中，同时把这个地址在urls.py里面建立映射，url(r'register_handler/',views.register_handler),实际就映射到了views.py里面的方法，然后你在views.py里定义一个方法:def register_hander(request)
+	这样，django可以根据表单提交的地址找到django的处理方法
+	(1)提取表单的相关数据
+		request.GET.get('username')
+		request.POST.get('username')
+		POST或GET取决于表单的method
+	(2) 写到django ORM模型，利用ORM模型去操作数据库
+		实例化一个django models类UserInfo
+		user=UserInfo
+		把类中的属性赋值
+		user.username=username
+		把数据存在数据库中
+		user.save()
+	(3)如果查找用户:
+		UserInfo.objects.all()全部查询
+		UserInfo.objects.get(username=username)取一条数据
+		UserInfo.objects.values()显示值
+		UserInfo.objects.filter(username=username)显示一个列表
+
+				
+django重定向
+	redirect()，定位到一个地址上
+请求地址action=""开头有/和没有/有区别
+	有/是当前访问的路径是项目文件夹的路径
+	没有/是当前访问的路径就是当前路径
+查询用户是否存在
+	get可以查出用户,查找的时候如果用户没有报错，如果用户是
