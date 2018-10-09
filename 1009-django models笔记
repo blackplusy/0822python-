@@ -1,0 +1,54 @@
+Django models
+	ORM关系模型 
+	username=models.CharField(max_length=20)定义了一个 varchar 型的数据类型
+	
+	整型 ：models.IntegerField()
+	小数型 : DecimalField(max_digits=5,decimal_places=2)
+	max_digits表示的是数字的位数 decimal_places小数的位数
+	布尔型:BooleanField()  对应mysql tinyint
+	日期型 : DateField TimeField DateTimeField
+	图片类型:ImageField(upload_to='')
+	邮件类型:EmailField()
+	网址类型:UrlField()
+	文本类型:TextField()
+	
+	统计类的annotate
+	django用annotate()相当于group by
+	()统计类的函数sum avg min max count
+	统计每一本书的作者个数
+		Book.objects.all().annotate(c=Count('author')).values('title','c')
+	字段比较结果
+		字段名__lt======>小于
+		字段名__gt ------->大于
+		字段名  =
+		字段名__lte----->小于等于
+		字段名__gte------->大于等于
+	统计每一本书的作者个数
+		Book.objects.all().annotate(c=Count('author')).values('title','c')
+	统计每个出版社买的最便宜的书的价格
+		Publisher.objects.all().annotate(m=Min('book__price')).values('name','m')
+	统计不止一个作者的图书
+		Book.objects.all().annotate(c=Count('author')).filter(c__gt=1)
+	根据一本图书作者数量多少排序（升序 asc 降序 desc)
+		Book.objects.all().annotate(c=Count('author')).order_by('c')
+	统计类的aggregate
+		利用统计函数对一个表的数据进行汇总
+	django的一些函数
+	filter出来一个列表
+	exclude不符合条件的列表
+		contains包含(中间、前、后）用法相当于大与 字段名__contains
+		startswith开头包含 
+		endswith结尾包含 
+	get取出符合条件的对象
+	first第一个
+	last最后一个	
+	Book.objects.filter(pk=2)
+	保存	save()
+	删除    delete()
+	
+	
+	
+	
+	
+	
+	
