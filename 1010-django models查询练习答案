@@ -1,0 +1,85 @@
+from django.db import models
+
+	class Student(models.Model):
+    	"""学生表"""
+    		name = models.CharField(max_length=100)
+    		gender = models.SmallIntegerField()
+
+    		class Meta:
+        		db_table = 'student'
+
+	class Course(models.Model):
+    	"""课程表"""
+    		name = models.CharField(max_length=100)
+        teacher = models.ForeignKey("Teacher",on_delete=models.SET_NULL,null=True)
+    		class Meta:
+        		db_table = 'course'
+
+	class Score(models.Model):
+    	"""分数表"""
+    		student = models.ForeignKey("Student",on_delete=models.CASCADE)
+    		course = models.ForeignKey("Course",on_delete=models.CASCADE)
+    		number = models.FloatField()
+
+    		class Meta:
+        		db_table = 'score'
+
+	class Teacher(models.Model):
+    	"""老师表"""
+    		name = models.CharField(max_length=100)
+
+    		class Meta:
+        		db_table = 'teacher'
+使用之前学到过的操作实现下面的查询操作：
+1.	查询平均成绩大于60分的同学的id和平均成绩；
+	Student.objects.all().annotate(av=Avg('score__number')).filter(av__gt=60).values('id','av')
+2.	查询所有同学的id、姓名、选课的数量、总成绩；
+	Student.objects.all().annotate(s=Sum('score__number'),c=Count('score__course')).values('id','name','s','c')
+3.	查询姓“李”的老师的个数；
+	Teacher.objects.filter(name__startswith='李').count()
+4.	查询没学过“李老师”课的同学的id、姓名；
+	Student.objects.all().exclude(score__course__teacher__name='李老师').values('id','name')
+5.	查询学过课程id为1和2的所有同学的id、姓名；
+	Student.objects.all().filter(score__course__id=1).filter(score__course__id=2).values('id','name','score__course__id');
+6.	查询学过“黄老师”所教的“所有课”的同学的id、姓名；
+	提：1、查询每个学生修黄老师课程的数
+	    2、查询黄老师教的课程总数
+	    3、当学生修的黄老师的课程数和黄老师教的课程数相同时，就是学过黄老师所有课程的学生
+	Student.objects.all().annotate(c=Count('score__course__teacher',filter=Q(score__course__teacher__name='黄老师'))).filter(c=Course.objects.all().filter(teacher__name='黄老师').count()).values('id','name')
+7.	查询所有课程成绩小于60分的同学的id和姓名；
+	Student.objects.all().annotate(m=Max('score__number')).filter(m__lt=60).values('id','name')
+8.	查询没有学全所有课的同学的id、姓名；
+	Student.objects.all().annotate(c=Count('score__course')).filter(c__lt=(Course.objects.count())).values('id','name')
+9.	查询所有学生的姓名、平均分，并且按照平均分从高到低排序；
+	Student.objects.all().annotate(av=Avg('score__number')).order_by('-av').values('id','name','av')
+10.	查询各科成绩的最高和最低分，以如下形式显示：课程ID，课程名称，最高分，最低分；
+	Course.objects.all().annotate(ma=Max('score__number'),mi=Min('score__number')).values('id','name','mi','ma');
+11.	查询每门课程的平均成绩，按照平均成绩进行排序；
+	Course.objects.all().annotate(av=Avg('score__number')).order_by('av').values('id','name','av')
+12.	统计总共有多少女生，多少男生；
+	Student.objects.all().filter(gender=1).count()
+	Student.objects.all().filter(gender=0).count()
+	Student.objects.all().aggregate(c1=Count('name',filter=Q(gender=1)),c2=Count('name',filter=Q(gender=0)))
+13.	将“黄老师”的每一门课程都在原来的基础之上加5分；
+	Score.objects.all().filter(course__teacher__name='黄老师').update(number=F('number')+5)
+14.	查询两门以上不及格的同学的id、姓名、以及不及格课程数；
+	Student.objects.all().annotate(c=Count('score__number',filter=Q(score__number__lt=60))).filter(c__gte=2).values('id','name','c');
+15.	查询每门课的选课人数；
+	Course.objects.all().annotate(c=Count('score')).values('name','c')
+F查询和Q查询
+	filter(name=’黄老师')
+	当两个字段比较
+		等式右边不能写字段		
+	F查询等式的右边是字段
+		Student.objects.all().filter(name=F('firstname'))
+		filter查询做不了or运算
+
+	Q查询里面是表达式
+		Q查询可以做or运算
+		Student.objects.all().filter(Q(id=1)|Q(id=2));
+	F查询和Q查询用在等式两边都是字段
+	查学生name和firstname相同的
+	Student.objects.all().filter(name=firstname)
+	filter(字段名=变量名) filter(username=username)
+	
+
