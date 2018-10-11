@@ -1,0 +1,77 @@
+views
+	逻辑：
+		1、获取表单的信息
+		2、对数据库进行操作
+		3、逻辑控制
+		4、在templates里面找模板
+（1）获取表单信息
+		request.POST.get
+		request.GET.get
+		get方法获取一个元素的内容是可以的，但多选框包含多个选项，getlist来获取多个选项
+		对于checkbox要注意:
+			1、checkbox必须有相同的name,同时必须有value
+			2、服务器端获取信息的时候用getlist
+(2)csrf 跨站访问攻击
+	{% csrf_token %}
+(3)render的实现
+	content = loader.render_to_string(template_name, context, request, using=using)
+    	return HttpResponse(content, content_type, status)
+   redirect跳转
+	HttpResposeRedirect
+(4)request 对象 HttpRequest 请求对象
+   response对象 HttpRespnose 响应对象
+(5)如何完成文件的上传
+	1、前端 form
+		有一个控件<input type="file" name="pic"/>
+		form标签中有属性 enctype="multipart/form-data"
+	2、后台:
+		获取file对象
+			file=request.FILES['pic']
+			file.name是文件的名字
+			os.path.join连接项目文件夹和下面的图片文件夹 
+			os.path.join(BASE_DIR,'images'+file.name)上传的文件名与服务器的文件名一致
+			服务器写
+			写的方式打开  f=open((os.path.join(BASE_DIR,'images/'+file.name),'wb')
+			遍历上传的file
+				for c in file.chunks():
+					f.write(c)
+				f.close()
+			最后上传成功
+(6)数据的保存
+	cookie是客户端保存数据的技术
+		写在响应体里
+			设置: resp=HttpResponse('ok')
+			     resp.set_cookie(key,值)
+			
+		读在请求体里
+			     request.COOKIES.get(key)
+		常常用来处理登录
+	cookie处理:记住密码 
+	session是服务器保存数据的技术
+	用户登陆写session里，
+		session的清除
+
+(7)验证码:
+	Pillow
+	需要三个对象:Image ImageDraw ImageFont
+	定义一个图像画布
+	im=Image.new方法(三个参数：模式'RGB',大小：元组(width,height),颜色：rgb元组(r,g,b)
+	在画布画东
+	draw=ImageDraw.Draw(im)
+	画线
+		draw.line(xy(四个值),fill=(颜色),width=宽度）
+	画点
+		draw.point(xy(二个值),fill=(颜色))
+	画文字
+		draw.text(（xy（二个值),fill=(颜色),font=ImageFont.truetype(字体名，字号))
+		font字体路径: usr/share/fonts/字体
+	把画布放在网页上
+	用到BytesIO
+	b=BytesIO
+	把图片存在BytesIO中
+	im.save(b,'png')存储的格式
+	在网页下显示的是 b 里面的内容 
+	return HttpResponse(b.getvalue(),'images/png')
+	一般开发需要：
+		定义一个图片接口
+		定义一个文字接口:做到验证码的对比,后端返回给前端的是JsonResponse,前端需要用ajax技术来解决获取的数据(jquery)
