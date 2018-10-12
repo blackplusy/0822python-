@@ -1,0 +1,45 @@
+简易博客
+	models:
+		数据结构:
+			标题
+			正文 
+			缩略图
+			发表时间
+			作者
+			博客分类
+		数据库:划分遵循标准(3nf)
+	views
+		增、删、改、查
+	删除传参: 正则表达式接收参数
+		(\d+)\d指的0-9的1位正整数 +号多位 （）表示函数可以接收的参数
+		+必须有一个
+		*可以有0个
+	修改传参:两种
+		1、通过正则表达传参  地址传递参数
+		2、通过表单
+			在表单中加一个<input type="hidden" value={{bo.id}}/>
+			提交以后后台接收
+				id=request.POST.get('id')
+	修改和删除models操作都需要:根据id去取数据模型中的值
+			Bo.objects.get(pk=id)
+	#search在后台用相关的字段模糊查询进行Q查询,用Q(title__contains=)|Q(content__contains=)
+分页
+	paginator
+	包：django.core.paginator import Paginator
+	做分页
+	实例化Paginator
+		p=Paginator(获取的数据列表，每页显示数据量)
+	在Paginator里有page方法,
+		pa=p.page(传入当前显示的页码)
+		pa结果集是当前页的所有数据
+	两个属性:
+		pa.num_pages总共的页数
+		pa.page_range页码的范围
+	
+把django换成mysql 
+	1、ll=Teacher.objects.all()
+		ll.query.__str__()
+	(1）、django里面objects.all()相当于select * from 
+	(2)、django里面的filter相当于select where 子句
+	(3)、做了annotate就相于 group by 主表 .id
+	(4)、annotate做了filter,相当于在select语句中加入一条统计的命令(Case When else)
