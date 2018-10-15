@@ -1,0 +1,108 @@
+模板
+	1、django对模板里{{}}输出变量，如果变量有html语句，不解释，直接输出
+		autoescape off
+	2、django模板可以继承使用
+		使有的关键字是{% extends '基础模板.html'}
+		基础模板理解成代码的公共部分，特殊的部分用{% block 名字 %}{% endblock %}
+		好处:有利于分工协作(前端组件式开发）
+		
+			id class js方法(规范) header_01 dx_ ex_ dx_
+			float:left; clear:both;
+			def  100-150行
+	3、django循环内容{% for la in las%}
+	   {%endfor%}
+	4、django条件内容 {% if s空格==空格1} {%endif%}
+			强调:if条件==两端必须有空格
+	5、显示一个变量{{变量名}} 如果是对象 {{对象名.属性}}
+登陆:
+	用户名：
+	密码：
+	urls
+	正则表达式:
+	r regex正则表达式 
+		^正则表达式的开始
+		$正则表达式的结束
+		\d 数字0-9 一位
+		表示多位  \d+   +表示1位到1位以上，至少 1位
+		\d*   * 表示0位或0位以上  可以没有
+		[]括起来，里面的内容是可以出现的
+		[0-9a-zA-Z]数字或者是小写字母或者是大写字母
+		空格可以理解成空白
+		[^0-9a-z]中括号里有^表示的是非,就是不是0-9
+		^[^0-9a-zA-Z_]+匹配用户名
+		密码复杂度 ：必须8位,必须字母  ^[a-zA-Z]{8}$指定8位
+		{}指定几位
+		接收参数  (\d+)用小括号括起来即可接收参数
+		\w等效于[0-9a-zA-Z_]
+		以上是掌握的
+		验证邮箱: \w+@\w+.*
+		验证电话号:1[3,5,6,7,8,9]\d{9}
+		验证网址:^http://\w+.\w+.*$
+		urls.py匹配规则从上到下,发现符合规则，直接访问
+读写分离:
+		list列表：增 删 改  写
+		tuple元组 查   读 
+	数据库同步:主从复制
+	`	django数据库读写分离
+	配置步骤:
+		1、settings里面DATABASES=再产生一个数据库的配置
+		2、再加一个数据库路由表,DATABASE_ROUTERS=[
+			写这个py文件，在py文件里写类,这里写类的路径
+	]
+		3、在指定的路径下建立py文件，写一个类，类名自己定义MyRouter
+			class MyRouter:
+			里面的方法不能更改名字
+				def db_for_read(self)读数据库指定方法 
+					return 'default'读数据库的别名，这个别名是settings里面设置的
+				def db_for_write(self)写数据库的指定方法：
+					return 'second'写数据库的别名，这个别名是settings里面设置的
+			验证:
+			1、python3 manage.py shell里面验证:
+				Info.objects.values()查出来是哪 个数据库的信息
+				info=Info()
+				info.xinxi='成龙'
+				info.save()
+				数据库里用select * from info去查询写的数据库，信息是否使用成功
+分时任务:
+	异步:
+		celery分时任务
+		django-celery django跟celery进行沟通
+		celery-with-redis redis做一个分时任务的管理
+	1、改settings:
+		INSTALL_APPS=[
+			'应用名称',
+			'djcelery'
+		]
+		在setting下面加入:
+			import djcelery
+			djcelery.setup_loader()对celery做一个初始化
+			BROKER_URL='redis://localhost:6379/0'分配celery的管理角色（redis)
+			CELERY_IMPORTS=('应用.task')celery定时任务的方法地址
+		写定时任务需要用到 celery写的装饰器
+		在应用下建一下task.py
+			引入一下task装饰器 
+			@task
+			def 自定义方法名 （）：
+				定义延时time.sleep(2)
+		再与views和urls.py
+			urls.py
+				url(r'^index/',views.index)
+			views.py写
+				show.delay()
+		执行python3 manage.py runserver
+			之间
+				第一步:同步数据库,多了一个djcelery的库
+				   python3 manage.py migrate
+				第二步:把工人叫醒
+
+						python3 manage.py celery worker --loglevel=info
+					如果有报错:
+						If you really want to continue then you have to set the C_FORCE_ROOT
+environment variable (but please think about this before you do).
+
+					在settings里面
+						from celery import platforms
+						platforms.C_FORCE_ROOT=True
+				再进行叫醒工人:
+		几要素:
+			任务队列(task queue)  任务(task) 工人 (worker)
