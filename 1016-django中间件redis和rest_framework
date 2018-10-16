@@ -1,0 +1,75 @@
+redis服务器产生:
+	1、公司原有mysql在近的地方，又有新的数据在远的地方，可以在远数据加redis服务器
+	2、网站用户名很多，用户活跃度非常好，用redis作为缓存服务器
+	3、专属通道用缓存服务器，视频需要缓存服务器
+	
+	django连一下redis
+	django调redis相当django有自己的缓存开发，把自己的缓存指向了redis服务器
+	1、django连接redis必须装pip3 install django-redis
+	2、settings里设置:
+		CACHES={
+    			'default':{
+        			'BACKEND':'django_redis.cache.RedisCache',
+        			'LOCATION':'redis://localhost:6379/0',
+        			'OPTIONS':{
+            				'CLIENT_CLASS':'django_redis.client.DefaultClient'
+        			}
+    			}
+		}	
+	3、views.py调用 redis
+		导包: from django.core.cache import cache
+		调用:
+			cache.set('username','admin')
+			print(cache.get('username')
+前后端分离:
+	django rest_framework 前端框架(vue) 
+		原理:  http请求----->urls.py----->views.py----->models的操作----->逻辑----->选择templates------>去templates文件夹找模板
+		引入rest_framework目的前后端完全分离
+		解决前后端分离的关键:models数据变成json数据
+		把models数据序列化了，转换成json数据
+		序列化就是把models转成了字典
+		姓名:老张   ======>  {'姓名':'老张'}
+		原理:http请求-->urls.py---路由----->viewsets----类-->返回数据固定参数
+			queryset------>结果集
+			serializer_class--->序列化的类
+			对应的ORM模型也要建立序列化的类
+		1、安装 pip3 install djangorestframework
+		2、配置settings
+			INSTALL_APPS=[
+				'应用名称'
+				'rest_framework'
+			]
+		3、建立models
+			class  Info(models.Model):
+				name=models.CharField(max_length=20)
+		4、写序列化
+			serializers.py
+			class InfoSerializer(serializers.ModelSerializer):
+				class Meta:
+					modal=Info
+					fields=()所有的字段'__all__'
+		5、写viewsets(写类)
+			class InfoView(serializers.ModeViewSet):
+				queryset=结果集
+				serializer_class=类（写序列化的类)
+		6、写router路由(urls.py)
+			from rest_framework import routers
+			router=routers.DefaultRouter()
+			router.register(r'info',viewset的名字)
+			url(r'^index/',include(router.urls))指向地址是router.urls的地址
+		7、前端用ajax接收数据(JSON.parse)
+中间件
+	settings中MIDDLEWARE是中间件
+		继承MiddlewareMixin
+		from django.utils.deprecation import MiddlewareMixin
+	两个方法 ：
+		process_request
+		process_view
+	中间件是请求的过程中或响应的过程中，概述起来说，就是发生在过程中
+	中间件可以判断用户是否登录，统计后台的访问量，对爬虫进行反爬，限定某些用户访问
+	用好中间件
+电商包含几个模块:
+	登录注册模块  购物车模块 支付模块 订单模块 信息维护模块  在线咨询模块  商品模块 
+登录注册模块:
+	登录----->本地登陆与第三方登陆------->本地登录------>是否应用读写分离(服务器做主从复制)----->是否写入redis---->登陆时是否需要session cookie记录相关的信息------->表:黑名单和白名单------>获取表单中的数据------->验证------->登录成功不成功------>成功------>记录当前登陆状态------>进行网站的操作-
+	
